@@ -207,7 +207,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         regresar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         regresar.setText("Regresar");
         regresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnRegresar.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 0, 100, 30));
+        btnRegresar.add(regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, -20, 100, 50));
 
         fondoPanel.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 650, 110, 30));
 
