@@ -103,7 +103,7 @@ public class ControladorRegistroUsuario implements MouseListener {
         boolean usuarioActivo = validarUsuarioActivo(String.valueOf(modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem()));
         //String usuarioActivo = String.valueOf(modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem());
         String tipoUsuario = String.valueOf(modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem());
-        String nombreUsuarioInicio = modelo.getVistaRegistro().txtNombreUsuario.getText();
+        String nombreUsuarioInicio = modelo.getVistaRegistro().txtIdUsuario.getText();
         creacionDeUsuario(nombreIngresado, apellidoIngresado, telefonoIngresado, emailIngresado, nombreUsuarioInicio, contraseniaIngresada, tipoUsuario, usuarioActivo);
     }
 
@@ -139,7 +139,7 @@ public class ControladorRegistroUsuario implements MouseListener {
         modelo.getVistaRegistro().txtEmail.setText("");
         modelo.getVistaRegistro().boxUsuarioActivo.setSelectedIndex(0);
         modelo.getVistaRegistro().boxTipoUsuario.setSelectedIndex(0);
-        modelo.getVistaRegistro().txtNombreUsuario.setText("");
+        modelo.getVistaRegistro().txtIdUsuario.setText("");
     }
 
     public boolean validarUsuarioActivo(String usuarioActivo) {

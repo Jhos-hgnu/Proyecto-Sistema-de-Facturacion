@@ -126,20 +126,20 @@ public class ControladorVentas implements MouseListener, ActionListener {
     }
 
     private void capturaDatosBuscarP() {
-        String nombreIngresado = modelo.getVistaVentas().txtNombreProducto.getText();
-        String codigoIngresadoP = modelo.getVistaVentas().txtCodigoBarras.getText();
+        String nombreIngresado = modelo.getVistaVentas().txtIdVenta.getText();
+        String codigoIngresadoP = modelo.getVistaVentas().txtNIT.getText();
 
         consultarProducto(nombreIngresado, codigoIngresadoP);
     }
 
     private void capturaDatosAgregarP() {
 
-        if (modelo.getVistaVentas().txtCantidad.getText().isEmpty()) {
+        if (modelo.getVistaVentas().txtDocumento.getText().isEmpty()) {
             mostrarError("No se pudo agregar el producto, por favor ingresa una cantidad válidad de productos");
         } else {
-            String nombreP = modelo.getVistaVentas().txtNombreProducto.getText();
-            String precioP = modelo.getVistaVentas().txtPrecio.getText();
-            String cantidadIngresada = modelo.getVistaVentas().txtCantidad.getText();
+            String nombreP = modelo.getVistaVentas().txtIdVenta.getText();
+            String precioP = modelo.getVistaVentas().txtTipoPago.getText();
+            String cantidadIngresada = modelo.getVistaVentas().txtDocumento.getText();
 //            String descuentoSubsidio = modelo.getVistaVentas().txtDescuentoSubsidio.getText();
             String subtotal = calcularTotal(precioP, cantidadIngresada);;
 
@@ -183,7 +183,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
     }
 
     public void datosVaciosBuscarP() {
-        if (modelo.getVistaVentas().txtNombreProducto.getText().isEmpty() && modelo.getVistaVentas().txtCodigoBarras.getText().isEmpty()) {
+        if (modelo.getVistaVentas().txtIdVenta.getText().isEmpty() && modelo.getVistaVentas().txtNIT.getText().isEmpty()) {
             mostrarError("Debe de ingresar al menos el nombre o código del producto");
         } else {
             capturaDatosBuscarP();
@@ -191,9 +191,9 @@ public class ControladorVentas implements MouseListener, ActionListener {
     }
 
     public void datosVaciosAgregarP() {
-        if (modelo.getVistaVentas().txtNombreProducto.getText().isEmpty()
-                || modelo.getVistaVentas().txtCodigoBarras.getText().isEmpty()
-                || modelo.getVistaVentas().txtPrecio.getText().isEmpty()) {
+        if (modelo.getVistaVentas().txtIdVenta.getText().isEmpty()
+                || modelo.getVistaVentas().txtNIT.getText().isEmpty()
+                || modelo.getVistaVentas().txtTipoPago.getText().isEmpty()) {
             mostrarError("No se pudo agregar el producto, por favor busque un producto para agregarlo");
         } else {
             capturaDatosAgregarP();
@@ -240,9 +240,9 @@ public class ControladorVentas implements MouseListener, ActionListener {
 
     public void elementosInvisibles() {
         modelo.getVistaVentas().txtNITCliente.setText("");
-        modelo.getVistaVentas().txtDescuentoSubsidio.setText("");
+        modelo.getVistaVentas().txtTotal.setText("");
         modelo.getVistaVentas().txtIdInsSubsidio.setText("");
-        modelo.getVistaVentas().txtArea.setText("");
+        modelo.getVistaVentas().txtObservaciones.setText("");
         modelo.getVistaVentas().cmbSubsidio.setSelectedIndex(0);
         modelo.getVistaVentas().cmbMetodoPago.setSelectedIndex(0);
         modelo.getVistaVentas().checkBoxVentaSinClienteR.setSelected(false);
@@ -254,34 +254,34 @@ public class ControladorVentas implements MouseListener, ActionListener {
         modelo.getVistaVentas().labelSubsidio.setVisible(false);
         modelo.getVistaVentas().cmbSubsidio.setVisible(false);
         modelo.getVistaVentas().labelDescuentoSubsidio.setVisible(false);
-        modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
+        modelo.getVistaVentas().txtTotal.setVisible(false);
         modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
         modelo.getVistaVentas().txtIdInsSubsidio.setVisible(false);
         modelo.getVistaVentas().labelObservaciones.setVisible(false);
-        modelo.getVistaVentas().txtArea.setVisible(false);
+        modelo.getVistaVentas().txtObservaciones.setVisible(false);
         modelo.getVistaVentas().btnCancelarVenta.setVisible(false);
         modelo.getVistaVentas().btnConfirmarVenta.setVisible(false);
         modelo.getVistaVentas().labelSubtotal.setVisible(false);
         modelo.getVistaVentas().labelTotal.setVisible(false);
-        modelo.getVistaVentas().txtSubTotal.setVisible(false);
+        modelo.getVistaVentas().txtIdUsuario.setVisible(false);
         modelo.getVistaVentas().txtTotal.setVisible(false);
         modelo.getVistaVentas().btnHacerVenta.setVisible(false);
 
     }
 
     private void limpiarElementos() {
-        modelo.getVistaVentas().txtNombreProducto.setText("");
-        modelo.getVistaVentas().txtCodigoBarras.setText("");
-        modelo.getVistaVentas().txtCantidad.setText("");
-        modelo.getVistaVentas().txtDescuentoSubsidio.setText("");
-        modelo.getVistaVentas().txtIdProducto.setText("");
+        modelo.getVistaVentas().txtIdVenta.setText("");
+        modelo.getVistaVentas().txtNIT.setText("");
+        modelo.getVistaVentas().txtDocumento.setText("");
+        modelo.getVistaVentas().txtTotal.setText("");
+        modelo.getVistaVentas().txtFecha.setText("");
 //        modelo.getVistaVentas().cmbSubsidio.setSelectedIndex(0);
 //        modelo.getVistaVentas().labelInstitucionSubsidio.setText("");
 //        modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
 //        modelo.getVistaVentas().labelDescuentoSubsidio.setText("");
 //        modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
-        modelo.getVistaVentas().txtPrecio.setText("");
-        modelo.getVistaVentas().txtArea.setText("");
+        modelo.getVistaVentas().txtTipoPago.setText("");
+        modelo.getVistaVentas().txtObservaciones.setText("");
 
     }
 //Metodos para botón confirmar
@@ -294,12 +294,12 @@ public class ControladorVentas implements MouseListener, ActionListener {
         } else {
             modelo.getVistaVentas().labelSubtotal.setVisible(true);
             modelo.getVistaVentas().labelTotal.setVisible(true);
-            modelo.getVistaVentas().txtSubTotal.setVisible(true);
+            modelo.getVistaVentas().txtIdUsuario.setVisible(true);
             modelo.getVistaVentas().txtTotal.setVisible(true);
             modelo.getVistaVentas().btnHacerVenta.setVisible(true);
 
             double totalSubCalculado = calcularSubtotal(modeloTablaVentas);
-            modelo.getVistaVentas().txtSubTotal.setText(String.valueOf(totalSubCalculado));
+            modelo.getVistaVentas().txtIdUsuario.setText(String.valueOf(totalSubCalculado));
             modelo.getVistaVentas().txtTotal.setText(String.valueOf(calcularTotal(totalSubCalculado)));
         }
 
@@ -327,7 +327,7 @@ public class ControladorVentas implements MouseListener, ActionListener {
         if (modelo.getVistaVentas().cmbSubsidio.getSelectedIndex() == 0) {
             calcularTotal = subtotal - descuento;
         } else {
-            descuento = Double.parseDouble(modelo.getVistaVentas().txtDescuentoSubsidio.getText());
+            descuento = Double.parseDouble(modelo.getVistaVentas().txtTotal.getText());
             calcularTotal = subtotal - descuento;
         }
         return calcularTotal;
@@ -354,11 +354,11 @@ public class ControladorVentas implements MouseListener, ActionListener {
                 mostrarError("El Producto no tiene suficiente stock");
             } else {
                 System.out.println("hola desde else");
-                modelo.getVistaVentas().txtIdProducto.setText(String.valueOf(modeloP.getIdProducto()));
-                modelo.getVistaVentas().txtCodigoBarras.setText(modeloP.getCodigoBarrasP());
-                modelo.getVistaVentas().txtNombreProducto.setText(modeloP.getNombreOficialP());
-                modelo.getVistaVentas().txtArea.setText(modeloP.getDescripcionP());
-                modelo.getVistaVentas().txtPrecio.setText(String.valueOf(modeloP.getPrecioVenta()));
+                modelo.getVistaVentas().txtFecha.setText(String.valueOf(modeloP.getIdProducto()));
+                modelo.getVistaVentas().txtNIT.setText(modeloP.getCodigoBarrasP());
+                modelo.getVistaVentas().txtIdVenta.setText(modeloP.getNombreOficialP());
+                modelo.getVistaVentas().txtObservaciones.setText(modeloP.getDescripcionP());
+                modelo.getVistaVentas().txtTipoPago.setText(String.valueOf(modeloP.getPrecioVenta()));
             }
         } catch (Exception e) {
             mostrarError("Producto no encontrado");
@@ -409,8 +409,8 @@ public class ControladorVentas implements MouseListener, ActionListener {
 
             //Configurar datos de la venta
             modeloClientesVentas.setTipoPago(modelo.getVistaVentas().cmbMetodoPago.getSelectedItem().toString());
-            modeloClientesVentas.setSubtotal(Double.parseDouble(modelo.getVistaVentas().txtSubTotal.getText()));
-            modeloClientesVentas.setDescuento(Double.parseDouble(modelo.getVistaVentas().txtDescuentoSubsidio.getText()));
+            modeloClientesVentas.setSubtotal(Double.parseDouble(modelo.getVistaVentas().txtIdUsuario.getText()));
+            modeloClientesVentas.setDescuento(Double.parseDouble(modelo.getVistaVentas().txtTotal.getText()));
             modeloClientesVentas.setTotal(Double.parseDouble(modelo.getVistaVentas().txtTotal.getText()));
 
             //Crear y llenar al carrito Jtable
@@ -470,12 +470,12 @@ public class ControladorVentas implements MouseListener, ActionListener {
             modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(true);
             modelo.getVistaVentas().txtIdInsSubsidio.setVisible(true);
             modelo.getVistaVentas().labelDescuentoSubsidio.setVisible(true);
-            modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(true);
+            modelo.getVistaVentas().txtTotal.setVisible(true);
         } else {
             modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
             modelo.getVistaVentas().txtIdInsSubsidio.setVisible(false);
             modelo.getVistaVentas().labelDescuentoSubsidio.setVisible(false);
-            modelo.getVistaVentas().txtDescuentoSubsidio.setVisible(false);
+            modelo.getVistaVentas().txtTotal.setVisible(false);
 
         }
     }

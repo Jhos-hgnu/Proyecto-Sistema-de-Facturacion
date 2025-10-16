@@ -126,19 +126,19 @@ public class ControladorClientes implements MouseListener {
     }
 
     private void llenarFormulario(Cliente cliente) {
-        vista.txtNombreCliente.setText(cliente.getNombre());
-        vista.txtApellidoCliente.setText(cliente.getApellido());
+        vista.txtNombreCliente2.setText(cliente.getNombre());
+        vista.txtApellidoCasado.setText(cliente.getApellido());
         vista.txtTelefono.setText(cliente.getTelefono());
-        vista.txtIdentificacion.setText(cliente.getIdentificacion());
+        vista.txtLimiteCredito.setText(cliente.getIdentificacion());
         vista.txtNIT.setText(cliente.getNit());
         vista.Subsidio.setSelected(cliente.isTieneSubsidio());
     }
 
     private void limpiarFormulario() {
-        vista.txtNombreCliente.setText("");
-        vista.txtApellidoCliente.setText("");
+        vista.txtNombreCliente2.setText("");
+        vista.txtApellidoCasado.setText("");
         vista.txtTelefono.setText("");
-        vista.txtIdentificacion.setText("");
+        vista.txtLimiteCredito.setText("");
         vista.txtNIT.setText("");
         vista.Subsidio.setSelected(false);
         vista.tblclientes.clearSelection();
@@ -153,10 +153,10 @@ public class ControladorClientes implements MouseListener {
     }
 
     private Cliente obtenerClienteDesdeFormulario() {
-        String nombre = vista.txtNombreCliente.getText().trim();
-        String apellido = vista.txtApellidoCliente.getText().trim();
+        String nombre = vista.txtNombreCliente2.getText().trim();
+        String apellido = vista.txtApellidoCasado.getText().trim();
         String telefono = vista.txtTelefono.getText().trim();
-        String identificacion = vista.txtIdentificacion.getText().trim();
+        String identificacion = vista.txtLimiteCredito.getText().trim();
         String nit = vista.txtNIT.getText().trim();
         boolean tieneSubsidio = vista.Subsidio.isSelected();
 
