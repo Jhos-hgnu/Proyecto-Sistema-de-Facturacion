@@ -88,39 +88,44 @@ public class PanelRoles extends javax.swing.JPanel {
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel6.setText("Descripción:");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 160, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, 160, -1));
 
         txtDescripcion.setBackground(new java.awt.Color(75, 128, 146));
         txtDescripcion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(255, 255, 255));
         txtDescripcion.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 370, 100));
+        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDescripcionActionPerformed(evt);
+            }
+        });
+        add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 470, 140));
 
         jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel7.setText("ID Rol:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 160, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 160, -1));
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel8.setText("Nombre del Rol:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 160, -1));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 160, -1));
 
         txtIdRol.setBackground(new java.awt.Color(75, 128, 146));
         txtIdRol.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIdRol.setForeground(new java.awt.Color(255, 255, 255));
         txtIdRol.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtIdRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 170, 190, -1));
+        add(txtIdRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, 290, -1));
 
         txtNombreRol.setBackground(new java.awt.Color(75, 128, 146));
         txtNombreRol.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtNombreRol.setForeground(new java.awt.Color(255, 255, 255));
         txtNombreRol.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtNombreRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 190, -1));
+        add(txtNombreRol, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 290, -1));
 
         btnRegistrar.setBackground(new java.awt.Color(75, 128, 146));
         btnRegistrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -134,7 +139,7 @@ public class PanelRoles extends javax.swing.JPanel {
         registrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistrar.add(registrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 5, 100, 20));
 
-        add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 550, -1, 30));
+        add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, -1, 30));
 
         btnBorrar.setBackground(new java.awt.Color(75, 128, 146));
         btnBorrar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -147,7 +152,7 @@ public class PanelRoles extends javax.swing.JPanel {
         borrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBorrar.add(borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
 
-        add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 550, -1, 30));
+        add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 530, -1, 30));
 
         btnBuscar.setBackground(new java.awt.Color(75, 128, 146));
         btnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -168,15 +173,19 @@ public class PanelRoles extends javax.swing.JPanel {
             btnBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnBuscarLayout.createSequentialGroup()
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 550, 110, 30));
+        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 530, 110, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
         System.exit(0);
     }//GEN-LAST:event_btnSalirMouseClicked
+
+    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDescripcionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

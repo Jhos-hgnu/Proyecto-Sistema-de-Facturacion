@@ -35,7 +35,6 @@ public class PanelInventario extends javax.swing.JPanel {
     private void initComponents() {
 
         fondoPanel = new javax.swing.JPanel();
-        titulo = new javax.swing.JLabel();
         marcaAgua = new javax.swing.JLabel();
         btnSalir = new javax.swing.JPanel();
         salir = new javax.swing.JLabel();
@@ -47,18 +46,12 @@ public class PanelInventario extends javax.swing.JPanel {
         tblInventario = new javax.swing.JTable();
         separador = new javax.swing.JSeparator();
         separador2 = new javax.swing.JSeparator();
+        titulo1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(850, 700));
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("INVENTARIO");
-        titulo.setPreferredSize(new java.awt.Dimension(302, 29));
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 850, -1));
 
         marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,7 +88,7 @@ public class PanelInventario extends javax.swing.JPanel {
         registroInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistroInventario.add(registroInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 5, 200, 20));
 
-        fondoPanel.add(btnRegistroInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 210, 30));
+        fondoPanel.add(btnRegistroInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, 210, 30));
 
         btnRegistroVenta.setBackground(new java.awt.Color(75, 128, 146));
         btnRegistroVenta.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -108,7 +101,7 @@ public class PanelInventario extends javax.swing.JPanel {
         registroVenta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnRegistroVenta.add(registroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 5, 200, 20));
 
-        fondoPanel.add(btnRegistroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 210, 30));
+        fondoPanel.add(btnRegistroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, 210, 30));
 
         tblInventario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         tblInventario.setModel(new javax.swing.table.DefaultTableModel(
@@ -126,7 +119,7 @@ public class PanelInventario extends javax.swing.JPanel {
         tblInventario.setShowGrid(false);
         tblTablaInventario.setViewportView(tblInventario);
 
-        fondoPanel.add(tblTablaInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, 670, 260));
+        fondoPanel.add(tblTablaInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 670, 280));
 
         separador.setBackground(new java.awt.Color(255, 255, 255));
         separador.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,6 +128,12 @@ public class PanelInventario extends javax.swing.JPanel {
         separador2.setBackground(new java.awt.Color(255, 255, 255));
         separador2.setForeground(new java.awt.Color(255, 255, 255));
         fondoPanel.add(separador2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 620, 850, -1));
+
+        titulo1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        titulo1.setForeground(new java.awt.Color(255, 255, 255));
+        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo1.setText("INVENTARIO");
+        fondoPanel.add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 850, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -166,7 +165,7 @@ public class PanelInventario extends javax.swing.JPanel {
     private javax.swing.JSeparator separador2;
     public javax.swing.JTable tblInventario;
     private javax.swing.JScrollPane tblTablaInventario;
-    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel titulo1;
     // End of variables declaration//GEN-END:variables
 
     public void setControlador(ControladorInventario controlador) {

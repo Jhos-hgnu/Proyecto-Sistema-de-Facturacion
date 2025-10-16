@@ -42,7 +42,6 @@ public class VistaReporte extends javax.swing.JPanel {
     private void initComponents() {
 
         fondoPanel = new javax.swing.JPanel();
-        titulo = new javax.swing.JLabel();
         marcaAgua = new javax.swing.JLabel();
         separador = new javax.swing.JSeparator();
         separador2 = new javax.swing.JSeparator();
@@ -54,16 +53,11 @@ public class VistaReporte extends javax.swing.JPanel {
         tblReportesVentas = new javax.swing.JTable();
         btn = new javax.swing.JPanel();
         btnExportarPDF = new javax.swing.JLabel();
+        titulo1 = new javax.swing.JLabel();
 
         fondoPanel.setBackground(new java.awt.Color(28, 95, 118));
         fondoPanel.setPreferredSize(new java.awt.Dimension(850, 655));
         fondoPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("REPORTES VENTAS");
-        fondoPanel.add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 850, -1));
 
         marcaAgua.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         marcaAgua.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,7 +102,7 @@ public class VistaReporte extends javax.swing.JPanel {
         btnMostrarVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnMos.add(btnMostrarVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
 
-        fondoPanel.add(btnMos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 240, 210, 30));
+        fondoPanel.add(btnMos, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 210, 30));
 
         tblReportesVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,7 +117,7 @@ public class VistaReporte extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblReportesVentas);
 
-        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 670, 260));
+        fondoPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 670, 310));
 
         btn.setBackground(new java.awt.Color(75, 128, 146));
         btn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -137,6 +131,12 @@ public class VistaReporte extends javax.swing.JPanel {
         btn.add(btnExportarPDF, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 30));
 
         fondoPanel.add(btn, new org.netbeans.lib.awtextra.AbsoluteConstraints(634, 550, 130, 30));
+
+        titulo1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        titulo1.setForeground(new java.awt.Color(255, 255, 255));
+        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo1.setText("REPORTES VENTAS");
+        fondoPanel.add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 850, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -168,7 +168,7 @@ public class VistaReporte extends javax.swing.JPanel {
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
     public javax.swing.JTable tblReportesVentas;
-    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel titulo1;
     // End of variables declaration//GEN-END:variables
 
     public void setControlador(ControladorReportes controlador) {

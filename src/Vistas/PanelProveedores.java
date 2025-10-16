@@ -31,7 +31,6 @@ public class PanelProveedores extends javax.swing.JPanel {
         marcaAgua = new javax.swing.JLabel();
         separador2 = new javax.swing.JSeparator();
         separador = new javax.swing.JSeparator();
-        titulo = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -62,6 +61,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         btnBuscar = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         cmbMetodoPago = new javax.swing.JComboBox<>();
+        titulo1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(28, 95, 118));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,137 +98,131 @@ public class PanelProveedores extends javax.swing.JPanel {
         separador.setForeground(new java.awt.Color(255, 255, 255));
         add(separador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 610, 850, -1));
 
-        titulo.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("PROVEEDORES");
-        add(titulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 850, -1));
-
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("ID Proveedor:");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 140, 20));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 140, 20));
 
         jLabel17.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("NIT:");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 180, 150, -1));
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 150, -1));
 
         jLabel18.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel18.setText("Razón Social:");
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 220, 150, -1));
+        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 150, -1));
 
         jLabel19.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel19.setText("Dirección:");
-        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 150, -1));
+        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 260, 150, -1));
 
         jLabel20.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel20.setText("Teléfono:");
-        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 150, -1));
+        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 150, -1));
 
         jLabel21.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel21.setText("Email:");
-        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 150, -1));
+        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 340, 150, -1));
 
         jLabel22.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel22.setText("Tipo de Pago:");
-        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 150, -1));
+        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 150, -1));
 
         jLabel23.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel23.setText("Plaza de Crédito:");
-        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 150, -1));
+        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 150, -1));
 
         jLabel24.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(255, 255, 255));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel24.setText("Representante:");
-        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 150, -1));
+        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 440, 150, -1));
 
         jLabel25.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel25.setText("Estado:");
-        add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 500, 150, -1));
+        add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, 150, -1));
 
         jLabel16.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel16.setText("Fecha de Registro:");
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 540, 150, -1));
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 520, 150, -1));
 
         txtIDProveedor.setBackground(new java.awt.Color(75, 128, 146));
         txtIDProveedor.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtIDProveedor.setForeground(new java.awt.Color(255, 255, 255));
         txtIDProveedor.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtIDProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, 270, -1));
+        add(txtIDProveedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 180, 180, -1));
 
         txtNIT.setBackground(new java.awt.Color(75, 128, 146));
         txtNIT.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtNIT.setForeground(new java.awt.Color(255, 255, 255));
         txtNIT.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 270, -1));
+        add(txtNIT, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 180, 150, -1));
 
         txtRazonSocial.setBackground(new java.awt.Color(75, 128, 146));
         txtRazonSocial.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtRazonSocial.setForeground(new java.awt.Color(255, 255, 255));
         txtRazonSocial.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 270, -1));
+        add(txtRazonSocial, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, 400, -1));
 
         txtDireccion.setBackground(new java.awt.Color(75, 128, 146));
         txtDireccion.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtDireccion.setForeground(new java.awt.Color(255, 255, 255));
         txtDireccion.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 260, 270, -1));
+        add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 400, -1));
 
         txtTelefono.setBackground(new java.awt.Color(75, 128, 146));
         txtTelefono.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtTelefono.setForeground(new java.awt.Color(255, 255, 255));
         txtTelefono.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 300, 270, -1));
+        add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, 170, -1));
 
         txtEmail.setBackground(new java.awt.Color(75, 128, 146));
         txtEmail.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(255, 255, 255));
         txtEmail.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 270, -1));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, 400, -1));
 
         txtPlazaCredito.setBackground(new java.awt.Color(75, 128, 146));
         txtPlazaCredito.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtPlazaCredito.setForeground(new java.awt.Color(255, 255, 255));
         txtPlazaCredito.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtPlazaCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 420, 270, -1));
+        add(txtPlazaCredito, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, 270, -1));
 
         txtRepresentante.setBackground(new java.awt.Color(75, 128, 146));
         txtRepresentante.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtRepresentante.setForeground(new java.awt.Color(255, 255, 255));
         txtRepresentante.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtRepresentante, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 460, 270, -1));
+        add(txtRepresentante, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 270, -1));
 
         txtEstado.setBackground(new java.awt.Color(75, 128, 146));
         txtEstado.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtEstado.setForeground(new java.awt.Color(255, 255, 255));
         txtEstado.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 500, 270, -1));
+        add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 480, 270, -1));
 
         txtFechaRegistro.setBackground(new java.awt.Color(75, 128, 146));
         txtFechaRegistro.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         txtFechaRegistro.setForeground(new java.awt.Color(255, 255, 255));
         txtFechaRegistro.setCaretColor(new java.awt.Color(255, 255, 255));
-        add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 540, 270, -1));
+        add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 520, 270, -1));
 
         btnAgregar.setBackground(new java.awt.Color(75, 128, 146));
         btnAgregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -241,7 +235,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         jLabel14.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAgregar.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 90, 30));
+        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 440, 90, 30));
 
         btnActualizar.setBackground(new java.awt.Color(75, 128, 146));
         btnActualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -254,7 +248,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnActualizar.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 480, 90, 30));
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, 90, 30));
 
         btnEliminar.setBackground(new java.awt.Color(75, 128, 146));
         btnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -267,7 +261,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         jLabel13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnEliminar.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, 90, 30));
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 520, 90, 30));
 
         btnBuscar.setBackground(new java.awt.Color(75, 128, 146));
         btnBuscar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -280,7 +274,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBuscar.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
 
-        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 90, 30));
+        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 400, 90, 30));
 
         cmbMetodoPago.setBackground(new java.awt.Color(75, 128, 146));
         cmbMetodoPago.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
@@ -292,7 +286,13 @@ public class PanelProveedores extends javax.swing.JPanel {
                 cmbMetodoPagoActionPerformed(evt);
             }
         });
-        add(cmbMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 140, -1));
+        add(cmbMetodoPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 300, 100, -1));
+
+        titulo1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        titulo1.setForeground(new java.awt.Color(255, 255, 255));
+        titulo1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo1.setText("PROVEEDORES");
+        add(titulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 850, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
@@ -330,7 +330,7 @@ public class PanelProveedores extends javax.swing.JPanel {
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JSeparator separador;
     private javax.swing.JSeparator separador2;
-    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel titulo1;
     public javax.swing.JTextField txtDireccion;
     public javax.swing.JTextField txtEmail;
     public javax.swing.JTextField txtEstado;
