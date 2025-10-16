@@ -64,7 +64,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         btnVentas = new javax.swing.JPanel();
         productos4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        btnUsuarios = new javax.swing.JPanel();
+        btnRegistroUsuarios = new javax.swing.JPanel();
         usuarios = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnAuditoria = new javax.swing.JPanel();
@@ -259,21 +259,21 @@ public class VistaAdmin extends javax.swing.JFrame {
 
         fondoPanel.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 210, 30));
 
-        btnUsuarios.setBackground(new java.awt.Color(75, 128, 146));
-        btnUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btnRegistroUsuarios.setBackground(new java.awt.Color(75, 128, 146));
+        btnRegistroUsuarios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnRegistroUsuarios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         usuarios.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         usuarios.setForeground(new java.awt.Color(255, 255, 255));
         usuarios.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         usuarios.setText("  Usuarios");
-        btnUsuarios.add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
+        btnRegistroUsuarios.add(usuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 30));
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("👤");
-        btnUsuarios.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 30, 30));
+        btnRegistroUsuarios.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 30, 30));
 
-        fondoPanel.add(btnUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 210, -1));
+        fondoPanel.add(btnRegistroUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 210, -1));
 
         btnAuditoria.setBackground(new java.awt.Color(75, 128, 146));
         btnAuditoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -495,10 +495,10 @@ public class VistaAdmin extends javax.swing.JFrame {
     public javax.swing.JPanel btnGestionInventario;
     public javax.swing.JPanel btnProductos;
     public javax.swing.JPanel btnProveedores;
+    public javax.swing.JPanel btnRegistroUsuarios;
     public javax.swing.JPanel btnRegresar;
     public javax.swing.JPanel btnReportes;
     private javax.swing.JPanel btnSalir;
-    public javax.swing.JPanel btnUsuarios;
     public javax.swing.JPanel btnVentas;
     public javax.swing.JPanel contenedorFondo;
     private javax.swing.JLabel fondoIzquierda;
@@ -537,7 +537,7 @@ public class VistaAdmin extends javax.swing.JFrame {
         btnProductos.addMouseListener(controlador);
         btnGestionInventario.addMouseListener(controlador);
         btnReportes.addMouseListener(controlador);
-        btnUsuarios.addMouseListener(controlador);
+        btnRegistroUsuarios.addMouseListener(controlador);
         btnComponentesProductos.addMouseListener(controlador);
     }
 }
