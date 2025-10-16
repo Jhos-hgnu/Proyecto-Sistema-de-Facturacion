@@ -23,7 +23,7 @@ public class PanelProducto extends javax.swing.JPanel {
         ControladorProducto controlador = new ControladorProducto(modelo);
 
         labelIDProducto.setVisible(false);
-        txtIdProducto.setVisible(false);
+        txtIdProductoB.setVisible(false);
         btnActualizar.setVisible(false);
         btnEliminar.setVisible(false);
         labelBuscarP.setVisible(false);
@@ -73,17 +73,17 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         txtStock = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
-        txtPrecioCompra = new javax.swing.JTextField();
+        txtPrecioCosto = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         txtPrecioVenta = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
         labelBuscarP = new javax.swing.JLabel();
-        txtIdProducto = new javax.swing.JTextField();
+        txtIdProductoB = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txtIDProducto = new javax.swing.JTextField();
-        txtNombreProducto1 = new javax.swing.JTextField();
-        txtPrecioVenta1 = new javax.swing.JTextField();
-        txtPrecioVenta2 = new javax.swing.JTextField();
+        txtIdProducto = new javax.swing.JTextField();
+        txtMarca = new javax.swing.JTextField();
+        txtIdImpuesto = new javax.swing.JTextField();
+        txtIdCategoria = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         titulo1 = new javax.swing.JLabel();
@@ -265,16 +265,16 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel18.setText("Stock:");
         fondoPanel.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 110, -1));
 
-        txtPrecioCompra.setBackground(new java.awt.Color(75, 128, 146));
-        txtPrecioCompra.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtPrecioCompra.setForeground(new java.awt.Color(255, 255, 255));
-        txtPrecioCompra.setCaretColor(new java.awt.Color(255, 255, 255));
-        txtPrecioCompra.addActionListener(new java.awt.event.ActionListener() {
+        txtPrecioCosto.setBackground(new java.awt.Color(75, 128, 146));
+        txtPrecioCosto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtPrecioCosto.setForeground(new java.awt.Color(255, 255, 255));
+        txtPrecioCosto.setCaretColor(new java.awt.Color(255, 255, 255));
+        txtPrecioCosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioCompraActionPerformed(evt);
+                txtPrecioCostoActionPerformed(evt);
             }
         });
-        fondoPanel.add(txtPrecioCompra, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, 80, -1));
+        fondoPanel.add(txtPrecioCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 290, 80, -1));
 
         jLabel19.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
@@ -299,10 +299,10 @@ public class PanelProducto extends javax.swing.JPanel {
         labelBuscarP.setText("BUSCAR PRODUCTO");
         fondoPanel.add(labelBuscarP, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 490, -1, 20));
 
-        txtIdProducto.setBackground(new java.awt.Color(75, 128, 146));
-        txtIdProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtIdProducto.setForeground(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 100, -1));
+        txtIdProductoB.setBackground(new java.awt.Color(75, 128, 146));
+        txtIdProductoB.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtIdProductoB.setForeground(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtIdProductoB, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 100, -1));
 
         jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
@@ -310,29 +310,29 @@ public class PanelProducto extends javax.swing.JPanel {
         jLabel9.setText("Nombre Producto:");
         fondoPanel.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 210, 140, 20));
 
-        txtIDProducto.setBackground(new java.awt.Color(75, 128, 146));
-        txtIDProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtIDProducto.setForeground(new java.awt.Color(255, 255, 255));
-        txtIDProducto.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtIDProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 270, -1));
+        txtIdProducto.setBackground(new java.awt.Color(75, 128, 146));
+        txtIdProducto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtIdProducto.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdProducto.setCaretColor(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtIdProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 270, -1));
 
-        txtNombreProducto1.setBackground(new java.awt.Color(75, 128, 146));
-        txtNombreProducto1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtNombreProducto1.setForeground(new java.awt.Color(255, 255, 255));
-        txtNombreProducto1.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtNombreProducto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 180, -1));
+        txtMarca.setBackground(new java.awt.Color(75, 128, 146));
+        txtMarca.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtMarca.setForeground(new java.awt.Color(255, 255, 255));
+        txtMarca.setCaretColor(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 210, 180, -1));
 
-        txtPrecioVenta1.setBackground(new java.awt.Color(75, 128, 146));
-        txtPrecioVenta1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtPrecioVenta1.setForeground(new java.awt.Color(255, 255, 255));
-        txtPrecioVenta1.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtPrecioVenta1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, 140, -1));
+        txtIdImpuesto.setBackground(new java.awt.Color(75, 128, 146));
+        txtIdImpuesto.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtIdImpuesto.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdImpuesto.setCaretColor(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtIdImpuesto, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, 140, -1));
 
-        txtPrecioVenta2.setBackground(new java.awt.Color(75, 128, 146));
-        txtPrecioVenta2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtPrecioVenta2.setForeground(new java.awt.Color(255, 255, 255));
-        txtPrecioVenta2.setCaretColor(new java.awt.Color(255, 255, 255));
-        fondoPanel.add(txtPrecioVenta2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 140, -1));
+        txtIdCategoria.setBackground(new java.awt.Color(75, 128, 146));
+        txtIdCategoria.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        txtIdCategoria.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdCategoria.setCaretColor(new java.awt.Color(255, 255, 255));
+        fondoPanel.add(txtIdCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 390, 140, -1));
 
         jLabel21.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
@@ -372,9 +372,9 @@ public class PanelProducto extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtStockActionPerformed
 
-    private void txtPrecioCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioCompraActionPerformed
+    private void txtPrecioCostoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioCostoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioCompraActionPerformed
+    }//GEN-LAST:event_txtPrecioCostoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -410,15 +410,15 @@ public class PanelProducto extends javax.swing.JPanel {
     public javax.swing.JTextField txtCodigoBarras;
     public javax.swing.JTextField txtCodigoBarrasP;
     public javax.swing.JTextField txtDescripcion;
-    public javax.swing.JTextField txtIDProducto;
+    public javax.swing.JTextField txtIdCategoria;
+    public javax.swing.JTextField txtIdImpuesto;
     public javax.swing.JTextField txtIdProducto;
+    public javax.swing.JTextField txtIdProductoB;
+    public javax.swing.JTextField txtMarca;
     public javax.swing.JTextField txtNombreProducto;
-    public javax.swing.JTextField txtNombreProducto1;
     public javax.swing.JTextField txtNombreProductoB;
-    public javax.swing.JTextField txtPrecioCompra;
+    public javax.swing.JTextField txtPrecioCosto;
     public javax.swing.JTextField txtPrecioVenta;
-    public javax.swing.JTextField txtPrecioVenta1;
-    public javax.swing.JTextField txtPrecioVenta2;
     public javax.swing.JTextField txtStock;
     // End of variables declaration//GEN-END:variables
 

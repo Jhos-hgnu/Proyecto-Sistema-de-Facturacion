@@ -28,7 +28,7 @@ public class ControladorVistaAdmin implements MouseListener {
             PanelProducto vistaPanelProd = new PanelProducto();
             mostrarPaneles(vistaPanelProd);
         } else if (e.getComponent().equals(modelo.getVistaAdmin().btnGestionInventario)) {
-            PanelInventario vistaPanelInvent = new PanelInventario();
+            PanelMostrarInventario vistaPanelInvent = new PanelMostrarInventario();
             mostrarPaneles(vistaPanelInvent);
         } else if (e.getComponent().equals(modelo.getVistaAdmin().btnReportes)) {
             VistaReporte vistaPanelReport = new VistaReporte();

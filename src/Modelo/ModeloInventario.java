@@ -2,7 +2,7 @@ package Modelo;
 
 import Implementacion.InventarioImp;
 import Interfaces.Iinventario;
-import Vistas.PanelInventario;
+import Vistas.PanelMostrarInventario;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
@@ -11,9 +11,9 @@ import java.sql.SQLException;
 
 public class ModeloInventario {
     private final Iinventario inventario;
-    public final PanelInventario vista;
+    public final PanelMostrarInventario vista;
 
-    public ModeloInventario(PanelInventario vista) {
+    public ModeloInventario(PanelMostrarInventario vista) {
         this.vista = vista;
         this.inventario = new InventarioImp();
     }

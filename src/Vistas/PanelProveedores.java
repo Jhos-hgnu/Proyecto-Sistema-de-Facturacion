@@ -108,7 +108,7 @@ public class PanelProveedores extends javax.swing.JPanel {
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel17.setText("NIT:");
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 180, 150, -1));
+        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 180, 50, -1));
 
         jLabel18.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
