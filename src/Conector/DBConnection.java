@@ -15,34 +15,44 @@ import java.sql.Statement;
  * @author jhosu
  */
 public class DBConnection {
-
-    private final String HOST = "sql.freedb.tech";
-    private final String USUARIO = "freedb_UserPruebas";
-    private final String CLAVE = "bnRB@krf4&bB#72";
-    private final String BASEDATOS = "freedb_FarmaciaSocial";
+    // DATOS DE TU BASE ORACLE
+    private final String HOST = "localhost";  
+    private final String PUERTO = "1521";
+    private final String SERVICIO = "FREEPDB1";     
+    private final String USUARIO = "Farmacia";  
+    private final String CLAVE = "Farmacia123"; 
     private final String URL;
     private Connection link;
     private PreparedStatement ps;
 
     public DBConnection() {
-        this.URL = "jdbc:mysql://" + this.HOST + "/" + this.BASEDATOS;
+       
+        this.URL = "jdbc:oracle:thin:@//" + HOST + ":" + PUERTO + "/" + SERVICIO;
     }
 
     public void conectar() {
         try {
+            
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+           
             this.link = DriverManager.getConnection(this.URL, this.USUARIO, this.CLAVE);
-        } catch (IllegalArgumentException | SecurityException | SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("✅ Conexión exitosa a Oracle");
+        } catch (ClassNotFoundException e) {
+            System.err.println("❌ No se encontró el driver de Oracle: " + e.getMessage());
+        } catch (SQLException ex) {
+            System.err.println("❌ Error al conectar con Oracle: " + ex.getMessage());
         }
     }
 
     public void desconectar() {
         try {
             if (link != null && !link.isClosed()) {
-                this.link.close();
+                link.close();
+                System.out.println("🔒 Conexión cerrada.");
             }
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.err.println("Error al cerrar conexión: " + ex.getMessage());
         }
     }
 
@@ -50,7 +60,7 @@ public class DBConnection {
         try {
             ps = link.prepareStatement(sql);
         } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
+            System.err.println("Error al preparar SQL: " + ex.getMessage());
         }
         return ps;
     }
@@ -67,17 +77,8 @@ public class DBConnection {
     public Connection getConnection() {
         return this.link;
     }
-    public Connection getConexion() {
-        try {
-            conectar(); 
-            return getConnection();
-        } catch (Exception e) {
-            System.err.println("Error al obtener conexión: " + e.getMessage());
-            return null;
-        }
-    }
-    
-    //---- MÉTODOS PARA TRANSACCIONES ----
+
+  
     public void comenzarTransaccion() throws SQLException {
         if (this.link != null) {
             this.link.setAutoCommit(false);
@@ -101,6 +102,7 @@ public class DBConnection {
             System.err.println("Error al revertir transacción: " + ex.getMessage());
         }
     }
+
 
 
 }
