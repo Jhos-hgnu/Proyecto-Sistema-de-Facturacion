@@ -14,7 +14,7 @@ import java.sql.Statement;
  *
  * @author jhosu
  */
-public class DBConnection {
+public class eliminar {
 
   
     private final String HOST = "localhost";  
