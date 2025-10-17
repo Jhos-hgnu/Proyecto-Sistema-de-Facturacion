@@ -15,7 +15,7 @@ import java.sql.Statement;
  * @author jhosu
  */
 public class DBConnection {
-    // DATOS DE TU BASE ORACLE
+  
     private final String HOST = "localhost";  
     private final String PUERTO = "1521";
     private final String SERVICIO = "FREEPDB1";     
