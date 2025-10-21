@@ -4,6 +4,7 @@
  */
 package Modelo;
 
+import java.util.Date;
 import Vistas.PanelVentas;
 import java.math.BigDecimal;
 import javax.swing.table.DefaultTableModel;
@@ -14,28 +15,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModeloVenta {
 
-    PanelVentas vistaVentas;
-    
-    private String nombreProducto;
-    private String codigoBarras;
-    private int idProducto;
-    private BigDecimal precio;
-    private int cantidad;
-    private boolean subsidio;
+    // Atributos
+    private long idVenta;
+    private String nit;
+    private Date fecha;
     private String tipoPago;
-    private BigDecimal subTotal;
-    private BigDecimal total;
-    private BigDecimal descuento;
-    private String institucion;
-    private boolean checkClienteSinRegistro;
-    private String nitCliente;
-    private String observaciones;
-    private DefaultTableModel tablaProductos;
-    private String usuarioActivo;
+    private String documento;
+    private double total;
+    private long idUsuario;
+    private String observacion;
+    private String clientesNit;
+    private long usuariosIdUsuario;
 
-   
-    public ModeloVenta() {
-    }
+    private PanelVentas vistaVentas;
 
     public ModeloVenta(PanelVentas vistaVentas) {
         this.vistaVentas = vistaVentas;
@@ -45,56 +37,49 @@ public class ModeloVenta {
         return vistaVentas;
     }
 
-    public void setVistaVentas(PanelVentas vistaVentas) {
-        this.vistaVentas = vistaVentas;
+    // Constructor vacío
+    public ModeloVenta() {
     }
 
-    public String getNombreProducto() {
-        return nombreProducto;
+    // Constructor con parámetros
+    public ModeloVenta(long idVenta, String nit, Date fecha, String tipoPago, String documento,
+            double total, long idUsuario, String observacion,
+            String clientesNit, long usuariosIdUsuario) {
+        this.idVenta = idVenta;
+        this.nit = nit;
+        this.fecha = fecha;
+        this.tipoPago = tipoPago;
+        this.documento = documento;
+        this.total = total;
+        this.idUsuario = idUsuario;
+        this.observacion = observacion;
+        this.clientesNit = clientesNit;
+        this.usuariosIdUsuario = usuariosIdUsuario;
     }
 
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
+    // Getters y Setters
+    public long getIdVenta() {
+        return idVenta;
     }
 
-    public String getCodigoBarras() {
-        return codigoBarras;
+    public void setIdVenta(long idVenta) {
+        this.idVenta = idVenta;
     }
 
-    public void setCodigoBarras(String codigoBarras) {
-        this.codigoBarras = codigoBarras;
+    public String getNit() {
+        return nit;
     }
 
-    public int getIdProducto() {
-        return idProducto;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
+    public Date getFecha() {
+        return fecha;
     }
 
-    public BigDecimal getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(BigDecimal precio) {
-        this.precio = precio;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public boolean isSubsidio() {
-        return subsidio;
-    }
-
-    public void setSubsidio(boolean subsidio) {
-        this.subsidio = subsidio;
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
     }
 
     public String getTipoPago() {
@@ -105,67 +90,62 @@ public class ModeloVenta {
         this.tipoPago = tipoPago;
     }
 
-    public BigDecimal getSubTotal() {
-        return subTotal;
+    public String getDocumento() {
+        return documento;
     }
 
-    public void setSubTotal(BigDecimal subTotal) {
-        this.subTotal = subTotal;
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
-    public BigDecimal getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(BigDecimal total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 
-    public BigDecimal getDescuento() {
-        return descuento;
+    public long getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setDescuento(BigDecimal descuento) {
-        this.descuento = descuento;
+    public void setIdUsuario(long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getInstitucion() {
-        return institucion;
+    public String getObservacion() {
+        return observacion;
     }
 
-    public void setInstitucion(String institucion) {
-        this.institucion = institucion;
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
     }
 
-    public boolean isCheckClienteSinRegistro() {
-        return checkClienteSinRegistro;
+    public String getClientesNit() {
+        return clientesNit;
     }
 
-    public void setCheckClienteSinRegistro(boolean checkClienteSinRegistro) {
-        this.checkClienteSinRegistro = checkClienteSinRegistro;
+    public void setClientesNit(String clientesNit) {
+        this.clientesNit = clientesNit;
     }
 
-    public String getNitCliente() {
-        return nitCliente;
+    public long getUsuariosIdUsuario() {
+        return usuariosIdUsuario;
     }
 
-    public void setNitCliente(String nitCliente) {
-        this.nitCliente = nitCliente;
+    public void setUsuariosIdUsuario(long usuariosIdUsuario) {
+        this.usuariosIdUsuario = usuariosIdUsuario;
     }
 
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
-
-    public DefaultTableModel getTablaProductos() {
-        return tablaProductos;
-    }
-
-    public void setTablaProductos(DefaultTableModel tablaProductos) {
-        this.tablaProductos = tablaProductos;
+    // Método para mostrar información
+    public void mostrarInfo() {
+        System.out.println("ID Venta: " + idVenta);
+        System.out.println("NIT Cliente: " + nit);
+        System.out.println("Fecha: " + fecha);
+        System.out.println("Tipo de Pago: " + tipoPago);
+        System.out.println("Total: " + total);
+        System.out.println("Usuario que atendió: " + idUsuario);
+        System.out.println("Observación: " + observacion);
     }
 }
