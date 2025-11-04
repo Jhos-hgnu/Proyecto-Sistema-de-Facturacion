@@ -9,6 +9,7 @@ package Controlador;
  * @author luisd
  */
 
+import Conector.DBConnection;
 import Implementacion.CuentasPorCobrarDAO;
 import Vistas.PanelCuentasCobrar;
 import java.awt.event.MouseAdapter;
@@ -29,128 +30,160 @@ public class ControladorCuentasCobrar {
 
     private final PanelCuentasCobrar vista;
     private final CuentasPorCobrarDAO dao;
+    private final DBConnection conexion;
 
-    public ControladorCuentasCobrar(PanelCuentasCobrar vista, Connection conexion) {
+    public ControladorCuentasCobrar(PanelCuentasCobrar vista) {
         this.vista = vista;
-        this.dao = new CuentasPorCobrarDAO(conexion);
-        inicializarEventos();
+        this.conexion = new DBConnection();
+        conexion.conectar();
+        Connection link = conexion.getConnection();
+        this.dao = new CuentasPorCobrarDAO(link);
+
+        agregarEventos();
     }
 
-    private void inicializarEventos() {
+    /**
+     * Asocia los botones del panel con las acciones del DAO.
+     */
+    private void agregarEventos() {
+        // 🔹 Agregar
         vista.btnAgregar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                agregar();
+                insertarCuenta();
             }
         });
 
+        // 🔹 Buscar
         vista.btnBuscar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                buscar();
+                buscarCuenta();
             }
         });
 
-        vista.btnEliminar.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                eliminar();
-            }
-        });
-
+        // 🔹 Actualizar / Cobrar
         vista.btnCobrar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                cobrar();
+                actualizarCuenta();
+            }
+        });
+
+        // 🔹 Eliminar
+        vista.btnEliminar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                eliminarCuenta();
             }
         });
     }
 
-    // 🟢 AGREGAR
-    private void agregar() {
+    // ==================================================
+    // 🔸 MÉTODOS DE CONTROL
+    // ==================================================
+
+    private void insertarCuenta() {
         try {
-            ModeloCuentasPorCobrar c = obtenerDesdeVista();
+            ModeloCuentasPorCobrar c = obtenerDatosFormulario();
             dao.insertar(c);
-            JOptionPane.showMessageDialog(vista, "Cuenta agregada correctamente.");
-            limpiar();
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(vista, "Error al agregar: " + ex.getMessage());
+            JOptionPane.showMessageDialog(vista, "✅ Cuenta registrada correctamente");
+            limpiarCampos();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(vista, "❌ Error al insertar cuenta: " + ex.getMessage());
         }
     }
 
-    // 🟡 BUSCAR
-    private void buscar() {
+    private void buscarCuenta() {
         try {
             long id = Long.parseLong(vista.txtIdCuentaCobro.getText());
             ModeloCuentasPorCobrar c = dao.buscarPorId(id);
 
             if (c != null) {
-                vista.txtIdVenta.setText(String.valueOf(c.getIdVenta()));
-                vista.txtFechaEmision.setText(c.getFechaEmision().toString());
-                vista.txtFechaVencimiento.setText(c.getFechaVence().toString());
-                vista.txtMonto.setText(String.valueOf(c.getMonto()));
-                vista.txtSaldo.setText(String.valueOf(c.getSaldo()));
-                vista.txtEstado.setText(c.getEstado());
+                mostrarEnFormulario(c);
             } else {
-                JOptionPane.showMessageDialog(vista, "No se encontró la cuenta.");
+                JOptionPane.showMessageDialog(vista, "⚠️ No se encontró la cuenta con ID: " + id);
             }
+
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(vista, "Error al buscar: " + ex.getMessage());
+            JOptionPane.showMessageDialog(vista, "❌ Error al buscar: " + ex.getMessage());
         }
     }
 
-    // 🔴 ELIMINAR
-    private void eliminar() {
+    private void actualizarCuenta() {
+        try {
+            ModeloCuentasPorCobrar c = obtenerDatosFormulario();
+            dao.actualizar(c);
+            JOptionPane.showMessageDialog(vista, "✏️ Cuenta actualizada/cobrada correctamente");
+            limpiarCampos();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(vista, "❌ Error al actualizar: " + ex.getMessage());
+        }
+    }
+
+    private void eliminarCuenta() {
         try {
             long id = Long.parseLong(vista.txtIdCuentaCobro.getText());
-            int conf = JOptionPane.showConfirmDialog(vista, "¿Seguro que deseas eliminar esta cuenta?", "Confirmar", JOptionPane.YES_NO_OPTION);
-            if (conf == JOptionPane.YES_OPTION) {
-                dao.eliminar(id);
-                JOptionPane.showMessageDialog(vista, "Cuenta eliminada correctamente.");
-                limpiar();
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(vista, "Error al eliminar: " + ex.getMessage());
+            dao.eliminar(id);
+            JOptionPane.showMessageDialog(vista, "🗑️ Cuenta eliminada correctamente");
+            limpiarCampos();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(vista, "❌ Error al eliminar: " + ex.getMessage());
         }
     }
 
-    // 💰 COBRAR
-    private void cobrar() {
+    // ==================================================
+    // 🔹 MÉTODOS AUXILIARES
+    // ==================================================
+
+    /**
+     * Convierte los datos de los JTextField en un objeto ModeloCuentasPorCobrar.
+     */
+    private ModeloCuentasPorCobrar obtenerDatosFormulario() {
         try {
-            long id = Long.parseLong(vista.txtIdCuentaCobro.getText());
-            ModeloCuentasPorCobrar c = dao.buscarPorId(id);
+            ModeloCuentasPorCobrar c = new ModeloCuentasPorCobrar();
 
-            if (c != null) {
-                c.setSaldo(0);
-                c.setEstado("Pagado");
-                dao.actualizar(c);
-                JOptionPane.showMessageDialog(vista, "Cuenta cobrada correctamente.");
-                limpiar();
-            } else {
-                JOptionPane.showMessageDialog(vista, "No se encontró la cuenta.");
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(vista, "Error al cobrar: " + ex.getMessage());
+            c.setIdCuentaCobro(Long.parseLong(vista.txtIdCuentaCobro.getText()));
+            c.setIdVenta(Long.parseLong(vista.txtIdVenta.getText()));
+            c.setMonto(Double.parseDouble(vista.txtMonto.getText()));
+            c.setSaldo(Double.parseDouble(vista.txtSaldo.getText()));
+            c.setEstado(vista.txtEstado.getText());
+            c.setVentaIdVenta(Long.parseLong(vista.txtIdVenta.getText()));
+
+            // Convierte texto a fecha
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date fechaEmision = sdf.parse(vista.txtFechaEmision.getText());
+            Date fechaVence = sdf.parse(vista.txtFechaVencimiento.getText());
+            c.setFechaEmision(fechaEmision);
+            c.setFechaVence(fechaVence);
+
+            return c;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(vista, "⚠️ Error en los datos del formulario: " + e.getMessage());
+            return null;
         }
     }
 
-    // 🧾 Obtener datos desde la vista
-    private ModeloCuentasPorCobrar obtenerDesdeVista() throws Exception {
+    /**
+     * Llena los campos del formulario con los datos del modelo.
+     */
+    private void mostrarEnFormulario(ModeloCuentasPorCobrar c) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
-        long idCuentaCobro = Long.parseLong(vista.txtIdCuentaCobro.getText());
-        long idVenta = Long.parseLong(vista.txtIdVenta.getText());
-        Date fechaEmision = sdf.parse(vista.txtFechaEmision.getText());
-        Date fechaVence = sdf.parse(vista.txtFechaVencimiento.getText());
-        double monto = Double.parseDouble(vista.txtMonto.getText());
-        double saldo = Double.parseDouble(vista.txtSaldo.getText());
-        String estado = vista.txtEstado.getText();
-
-        // ventaIdVenta se puede usar igual que idVenta si es la FK
-        return new ModeloCuentasPorCobrar(idCuentaCobro, idVenta, fechaEmision, fechaVence, monto, saldo, estado, idVenta);
+        vista.txtIdCuentaCobro.setText(String.valueOf(c.getIdCuentaCobro()));
+        vista.txtIdVenta.setText(String.valueOf(c.getIdVenta()));
+        vista.txtFechaEmision.setText(sdf.format(c.getFechaEmision()));
+        vista.txtFechaVencimiento.setText(sdf.format(c.getFechaVence()));
+        vista.txtMonto.setText(String.valueOf(c.getMonto()));
+        vista.txtSaldo.setText(String.valueOf(c.getSaldo()));
+        vista.txtEstado.setText(c.getEstado());
     }
 
-    private void limpiar() {
+    /**
+     * Limpia los campos del formulario.
+     */
+    private void limpiarCampos() {
         vista.txtIdCuentaCobro.setText("");
         vista.txtIdVenta.setText("");
         vista.txtFechaEmision.setText("");
