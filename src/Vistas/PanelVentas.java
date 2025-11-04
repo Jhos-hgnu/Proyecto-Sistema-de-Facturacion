@@ -20,33 +20,24 @@ public class PanelVentas extends javax.swing.JPanel {
     public PanelVentas() {
         initComponents();
 
-        ModeloVenta modelo = new ModeloVenta(this);
-        ControladorVentas controlador = new ControladorVentas(modelo);
-             
+        ModeloVenta modelo = new ModeloVenta();
+        ControladorVentas controlador = new ControladorVentas(modelo, this);
+
+        // Configura el controlador en la vista
         setControlador(controlador);
-        
-//        modelo.getVistaVentas().checkBoxVentaSinClienteR.setSelected(false);
-//        modelo.getVistaVentas().labelTipoPago.setVisible(false);
-        modelo.getVistaVentas().cmbMetodoPago.setVisible(false);
-//        modelo.getVistaVentas().checkBoxVentaSinClienteR.setVisible(false);
-//        modelo.getVistaVentas().labelNIT.setVisible(false);
-        modelo.getVistaVentas().txtNITCliente.setVisible(false);
-//        modelo.getVistaVentas().labelSubsidio.setVisible(false);
-//        modelo.getVistaVentas().cmbSubsidio.setVisible(false);
-        modelo.getVistaVentas().labelDescuentoSubsidio.setVisible(false);
-        modelo.getVistaVentas().txtTotal.setVisible(false);
-//        modelo.getVistaVentas().labelInstitucionSubsidio.setVisible(false);
-//        modelo.getVistaVentas().txtIdInsSubsidio.setVisible(false);
-        modelo.getVistaVentas().labelObservaciones.setVisible(false);
-        modelo.getVistaVentas().scrollPanel.setVisible(false);
-//        modelo.getVistaVentas().btnCancelarVenta.setVisible(false);
-//        modelo.getVistaVentas().btnConfirmarVenta.setVisible(false);
-        modelo.getVistaVentas().btnHacerVenta.setVisible(false);
-        modelo.getVistaVentas().labelTotal.setVisible(false);
-        modelo.getVistaVentas().labelSubtotal.setVisible(false);
-        modelo.getVistaVentas().txtTotal.setVisible(false);
-        modelo.getVistaVentas().txtIdUsuario.setVisible(false);
-        
+
+        // Oculta elementos innecesarios (sin cambios)
+        cmbMetodoPago.setVisible(false);
+        txtNITCliente.setVisible(false);
+        labelDescuentoSubsidio.setVisible(false);
+        txtTotal.setVisible(false);
+        labelObservaciones.setVisible(false);
+        scrollPanel.setVisible(false);
+        btnHacerVenta.setVisible(false);
+        labelTotal.setVisible(false);
+        labelSubtotal.setVisible(false);
+        txtTotal.setVisible(false);
+        txtIdUsuario.setVisible(false);
     }
 
     /**
@@ -436,6 +427,6 @@ public class PanelVentas extends javax.swing.JPanel {
 //        btnAceptar.addMouseListener(controlador);
 //        btnConfirmarVenta.addMouseListener(controlador);
 //        btnCancelarVenta.addMouseListener(controlador);
-       
+
     }
 }

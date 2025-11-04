@@ -15,36 +15,26 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModeloVenta {
 
-    // Atributos
-    private long idVenta;
-    private String nit;
-    private Date fecha;
-    private String tipoPago;
-    private String documento;
-    private double total;
-    private long idUsuario;
-    private String observacion;
-    private String clientesNit;
-    private long usuariosIdUsuario;
+    // === Atributos (según la tabla "venta") ===
+    private long idVenta;               // id_venta
+    private String nit;                 // nit del cliente
+    private Date fecha;                 // fecha
+    private String tipoPago;            // tipo_pago
+    private String documento;           // documento
+    private double total;               // total
+    private long idUsuario;             // id_usuario (vendedor)
+    private String observacion;         // observacion
+    private String clientesNit;         // clientes_nit (relación con tabla clientes)
+    private long usuariosIdUsuario;     // Usuarios_Id_usuario (relación con tabla usuarios)
 
-    private PanelVentas vistaVentas;
-
-    public ModeloVenta(PanelVentas vistaVentas) {
-        this.vistaVentas = vistaVentas;
-    }
-
-    public PanelVentas getVistaVentas() {
-        return vistaVentas;
-    }
-
-    // Constructor vacío
+    // Constructor vacío (por defecto)
     public ModeloVenta() {
     }
 
-    // Constructor con parámetros
-    public ModeloVenta(long idVenta, String nit, Date fecha, String tipoPago, String documento,
-            double total, long idUsuario, String observacion,
-            String clientesNit, long usuariosIdUsuario) {
+    // Constructor con todos los parámetros
+    public ModeloVenta(long idVenta, String nit, Date fecha, String tipoPago,
+                       String documento, double total, long idUsuario,
+                       String observacion, String clientesNit, long usuariosIdUsuario) {
         this.idVenta = idVenta;
         this.nit = nit;
         this.fecha = fecha;
@@ -57,7 +47,7 @@ public class ModeloVenta {
         this.usuariosIdUsuario = usuariosIdUsuario;
     }
 
-    // Getters y Setters
+    // === Getters y Setters ===
     public long getIdVenta() {
         return idVenta;
     }
@@ -138,14 +128,17 @@ public class ModeloVenta {
         this.usuariosIdUsuario = usuariosIdUsuario;
     }
 
-    // Método para mostrar información
+    // === Método de utilidad para mostrar información ===
     public void mostrarInfo() {
+        System.out.println("=== Información de Venta ===");
         System.out.println("ID Venta: " + idVenta);
         System.out.println("NIT Cliente: " + nit);
         System.out.println("Fecha: " + fecha);
         System.out.println("Tipo de Pago: " + tipoPago);
-        System.out.println("Total: " + total);
-        System.out.println("Usuario que atendió: " + idUsuario);
+        System.out.println("Documento: " + documento);
+        System.out.println("Total: Q" + total);
+        System.out.println("ID Usuario (Vendedor): " + idUsuario);
         System.out.println("Observación: " + observacion);
+        System.out.println("===============================");
     }
 }

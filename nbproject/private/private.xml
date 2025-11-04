@@ -3,9 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Vistas/PanelVentas.java</file>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Modelo/ModeloCuentasPorCobrar.java</file>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Modelo/ModeloDetalleVenta.java</file>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Modelo/ModeloClientesVentas.java</file>
             <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Controlador/ControladorVentas.java</file>
-            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/proyecto_farmacia.java</file>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Modelo/ModeloUsuario.java</file>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Implementacion/CuentasPorCobrarDAO.java</file>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Implementacion/VentaImp.java</file>
             <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Conector/DBConnection.java</file>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Interfaces/IVenta.java</file>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Modelo/ModeloVenta.java</file>
+            <file>file:/C:/Users/luisd/OneDrive/Documentos/NetBeansProjects/Proyecto-Sistema-de-Facturacion/src/Modelo/ModeloInicioUsuario.java</file>
         </group>
     </open-files>
 </project-private>

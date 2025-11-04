@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -7,52 +8,92 @@ import java.util.List;
  * @author jhosu
  */
 public class ModeloClientesVentas {
-    
-    private int idCliente;
-    private String nombre;
-    private String apellido;
-    private String direccion;
-    private String nit;
-    private String identificacion;
-    private String telefono;
-    private boolean tieneSubsidio;
-    private Integer idInstitucionSubsidio;
-    private String nombreEncontradoNit;
-    private String apellidoEncontradoNit;
-    private String direccionEncontradaNit;
-    private double subtotal;
-    private double total;
-    private double descuento;
-    private String tipoPago;
-    private boolean conSubsidio;
-    private String observaciones;
-    private List<ModeloDetalleVenta> carrito;
 
+    private String nit;
+    private String primerNombre;
+    private String segundoNombre;
+    private String primerApellido;
+    private String segundoApellido;
+    private String apellidoCasada;
+    private String direccion;
+    private String telefono;
+    private String email;
+    private String tipoCliente;
+    private double limiteCredito;
+    private String estado;
+    private Date fechaRegistro;
+
+    // 🔹 Constructor vacío
     public ModeloClientesVentas() {
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    // 🔹 Constructor con parámetros
+    public ModeloClientesVentas(String nit, String primerNombre, String segundoNombre,
+            String primerApellido, String segundoApellido, String apellidoCasada,
+            String direccion, String telefono, String email, String tipoCliente,
+            double limiteCredito, String estado, Date fechaRegistro) {
+        this.nit = nit;
+        this.primerNombre = primerNombre;
+        this.segundoNombre = segundoNombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.apellidoCasada = apellidoCasada;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+        this.tipoCliente = tipoCliente;
+        this.limiteCredito = limiteCredito;
+        this.estado = estado;
+        this.fechaRegistro = fechaRegistro;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    // 🔹 Getters y Setters
+    public String getNit() {
+        return nit;
     }
 
-    public String getNombre() {
-        return nombre;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public String getPrimerNombre() {
+        return primerNombre;
     }
 
-    public String getApellido() {
-        return apellido;
+    public void setPrimerNombre(String primerNombre) {
+        this.primerNombre = primerNombre;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
+    public String getSegundoNombre() {
+        return segundoNombre;
+    }
+
+    public void setSegundoNombre(String segundoNombre) {
+        this.segundoNombre = segundoNombre;
+    }
+
+    public String getPrimerApellido() {
+        return primerApellido;
+    }
+
+    public void setPrimerApellido(String primerApellido) {
+        this.primerApellido = primerApellido;
+    }
+
+    public String getSegundoApellido() {
+        return segundoApellido;
+    }
+
+    public void setSegundoApellido(String segundoApellido) {
+        this.segundoApellido = segundoApellido;
+    }
+
+    public String getApellidoCasada() {
+        return apellidoCasada;
+    }
+
+    public void setApellidoCasada(String apellidoCasada) {
+        this.apellidoCasada = apellidoCasada;
     }
 
     public String getDireccion() {
@@ -63,22 +104,6 @@ public class ModeloClientesVentas {
         this.direccion = direccion;
     }
 
-    public String getNit() {
-        return nit;
-    }
-
-    public void setNit(String nit) {
-        this.nit = nit;
-    }
-
-    public String getIdentificacion() {
-        return identificacion;
-    }
-
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
-    }
-
     public String getTelefono() {
         return telefono;
     }
@@ -87,103 +112,65 @@ public class ModeloClientesVentas {
         this.telefono = telefono;
     }
 
-    public boolean isTieneSubsidio() {
-        return tieneSubsidio;
+    public String getEmail() {
+        return email;
     }
 
-    public void setTieneSubsidio(boolean tieneSubsidio) {
-        this.tieneSubsidio = tieneSubsidio;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Integer getIdInstitucionSubsidio() {
-        return idInstitucionSubsidio;
+    public String getTipoCliente() {
+        return tipoCliente;
     }
 
-    public void setIdInstitucionSubsidio(Integer idInstitucionSubsidio) {
-        this.idInstitucionSubsidio = idInstitucionSubsidio;
+    public void setTipoCliente(String tipoCliente) {
+        this.tipoCliente = tipoCliente;
     }
 
-    public String getNombreEncontradoNit() {
-        return nombreEncontradoNit;
+    public double getLimiteCredito() {
+        return limiteCredito;
     }
 
-    public void setNombreEncontradoNit(String nombreEncontradoNit) {
-        this.nombreEncontradoNit = nombreEncontradoNit;
+    public void setLimiteCredito(double limiteCredito) {
+        this.limiteCredito = limiteCredito;
     }
 
-    public String getApellidoEncontradoNit() {
-        return apellidoEncontradoNit;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setApellidoEncontradoNit(String apellidoEncontradoNit) {
-        this.apellidoEncontradoNit = apellidoEncontradoNit;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public String getDireccionEncontradaNit() {
-        return direccionEncontradaNit;
+    public Date getFechaRegistro() {
+        return fechaRegistro;
     }
 
-    public void setDireccionEncontradaNit(String direccionEncontradaNit) {
-        this.direccionEncontradaNit = direccionEncontradaNit;
+    public void setFechaRegistro(Date fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
-    public double getSubtotal() {
-        return subtotal;
+    // 🔹 Método para mostrar nombre completo
+    public String getNombreCompleto() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(primerNombre);
+        if (segundoNombre != null && !segundoNombre.isEmpty()) {
+            sb.append(" ").append(segundoNombre);
+        }
+        sb.append(" ").append(primerApellido);
+        if (segundoApellido != null && !segundoApellido.isEmpty()) {
+            sb.append(" ").append(segundoApellido);
+        }
+        if (apellidoCasada != null && !apellidoCasada.isEmpty()) {
+            sb.append(" de ").append(apellidoCasada);
+        }
+        return sb.toString().trim();
     }
 
-    public void setSubtotal(double subtotal) {
-        this.subtotal = subtotal;
+    @Override
+    public String toString() {
+        return getNombreCompleto() + " (" + nit + ")";
     }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public double getDescuento() {
-        return descuento;
-    }
-
-    public void setDescuento(double descuento) {
-        this.descuento = descuento;
-    }
-
-    public String getTipoPago() {
-        return tipoPago;
-    }
-
-    public void setTipoPago(String tipoPago) {
-        this.tipoPago = tipoPago;
-    }
-
-    public boolean isConSubsidio() {
-        return conSubsidio;
-    }
-
-    public void setConSubsidio(boolean conSubsidio) {
-        this.conSubsidio = conSubsidio;
-    }
-
-    public String getObservaciones() {
-        return observaciones;
-    }
-
-    public void setObservaciones(String observaciones) {
-        this.observaciones = observaciones;
-    }
-
-    public List<ModeloDetalleVenta> getCarrito() {
-        return carrito;
-    }
-
-    public void setCarrito(List<ModeloDetalleVenta> carrito) {
-        this.carrito = carrito;
-    }
-    
-    
-    
-    
 }

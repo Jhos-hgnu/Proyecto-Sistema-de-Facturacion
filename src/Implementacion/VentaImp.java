@@ -45,16 +45,17 @@ public class VentaImp implements IVenta {
     public boolean hacerVenta(ModeloVenta modelo) {
         boolean resultado = false;
 
-        // Fecha actual en formato yyyy-MM-dd
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String fechaFormateada = LocalDateTime.now().format(formatter);
 
         conector.conectar();
         try {
+            // 🔹 Obtener el siguiente ID desde Oracle
+            long nuevoIdVenta = conector.obtenerSiguienteId("SEQ_VENTAS");
+            modelo.setIdVenta(nuevoIdVenta);
+
             ps = conector.preparar(sql.getHACER_VENTA());
-            // Ejemplo de SQL esperado:
-            // INSERT INTO ventas (id_venta, nit, fecha, tipo_pago, documento, total, id_usuario, observacion, clientes_nit, usuarios_id_usuario)
-            // VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+
             ps.setLong(1, modelo.getIdVenta());
             ps.setString(2, modelo.getNit());
             ps.setString(3, fechaFormateada);
@@ -66,11 +67,12 @@ public class VentaImp implements IVenta {
             ps.setString(9, modelo.getClientesNit());
             ps.setLong(10, modelo.getUsuariosIdUsuario());
 
-            int filas = ps.executeUpdate();
-            resultado = filas > 0;
+            resultado = ps.executeUpdate() > 0;
+
+            System.out.println("🧾 Venta registrada con ID: " + nuevoIdVenta);
 
         } catch (SQLException e) {
-            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, "❌ Error al insertar venta", e);
         } finally {
             cerrarRecursos();
         }
@@ -87,24 +89,23 @@ public class VentaImp implements IVenta {
         conector.conectar();
 
         try {
-            // Este SQL debería venir de tu clase SQL (puedes reemplazarlo si difiere)
-            // Ejemplo:
-            // INSERT INTO detalle_ventas (id_venta, producto, precio, cantidad, subtotal) VALUES (?, ?, ?, ?, ?);
             ps = conector.preparar(sql.getINSERTAR_DETALLE_VENTA());
 
-            // Los datos de detalle dependerán de cómo manejes los productos
-            // Aquí te muestro un ejemplo base:
+            /*
+              SQL esperado:
+              INSERT INTO detalle_ventas (id_venta, producto, precio, cantidad, subtotal)
+              VALUES (?, ?, ?, ?, ?);
+             */
             ps.setLong(1, modelo.getIdVenta());
-            ps.setString(2, modelo.getDocumento()); // Puedes cambiar según tu estructura
-            ps.setDouble(3, modelo.getTotal());     // Ejemplo: usar total como precio de prueba
-            ps.setInt(4, 1);                        // Ejemplo: cantidad
-            ps.setDouble(5, modelo.getTotal());     // subtotal igual al total (solo como muestra)
+            ps.setString(2, modelo.getProducto());
+            ps.setDouble(3, modelo.getPrecio());
+            ps.setInt(4, modelo.getCantidad());
+            ps.setDouble(5, modelo.getSubtotal());
 
-            int filas = ps.executeUpdate();
-            resultado = filas > 0;
+            resultado = ps.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, "❌ Error al guardar detalle de venta", e);
         } finally {
             cerrarRecursos();
         }
@@ -113,12 +114,12 @@ public class VentaImp implements IVenta {
     }
 
     /**
-     * Busca un producto por nombre o código.
+     * Busca un producto por nombre o código de barras.
      */
     @Override
     public ModeloProducto buscarProducto(String nombreP, String codigoB) {
         ModeloProducto modelo = null;
-        boolean buscarPorNombre = nombreP != null && !nombreP.isEmpty();
+        boolean buscarPorNombre = nombreP != null && !nombreP.trim().isEmpty();
         String sqlEjecutar = buscarPorNombre ? sql.getBUSCAR_PRODUCTOS_NOMBRES() : sql.getBUSCAR_PRODUCTO_CODIGO();
 
         conector.conectar();
@@ -146,7 +147,7 @@ public class VentaImp implements IVenta {
             }
 
         } catch (SQLException e) {
-            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, "❌ Error al buscar producto", e);
         } finally {
             cerrarRecursos();
         }
@@ -157,6 +158,7 @@ public class VentaImp implements IVenta {
     /**
      * Consulta un cliente por NIT o número de identificación.
      */
+    @Override
     public ModeloClientesVentas consultarCliente(String criterioNitId) {
         ModeloClientesVentas modelo = null;
         conector.conectar();
@@ -165,26 +167,21 @@ public class VentaImp implements IVenta {
             ps = conector.preparar(sql.getBUSCAR_CLIENTE_NIT_IDENTIFICACION());
             ps.setString(1, criterioNitId);
             ps.setString(2, criterioNitId);
-            rs = ps.executeQuery();
 
+            rs = ps.executeQuery();
             if (rs.next()) {
                 modelo = new ModeloClientesVentas();
                 modelo.setIdCliente(rs.getInt("id_cliente"));
                 modelo.setNombre(rs.getString("nombre"));
-                modelo.setApellido(rs.getString("apellido"));
                 modelo.setDireccion(rs.getString("direccion"));
-                modelo.setNit(rs.getString("nit"));
-                modelo.setIdentificacion(rs.getString("identificacion"));
                 modelo.setTelefono(rs.getString("telefono"));
-                modelo.setTieneSubsidio(rs.getBoolean("tiene_subsidio"));
-                int idInstitucion = rs.getInt("id_institucion_subsidio");
-                if (!rs.wasNull()) {
-                    modelo.setIdInstitucionSubsidio(idInstitucion);
-                }
+                modelo.setCorreo(rs.getString("correo"));
+                modelo.setNit(rs.getString("nit"));
+                modelo.setDpi(rs.getString("dpi"));
             }
 
         } catch (SQLException e) {
-            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, "❌ Error al consultar cliente", e);
         } finally {
             cerrarRecursos();
         }
@@ -193,22 +190,19 @@ public class VentaImp implements IVenta {
     }
 
     /**
-     * Cierra los recursos abiertos (ps, rs y conexión).
+     * Cierra los recursos abiertos (ResultSet, PreparedStatement y conexión).
      */
-    
     private void cerrarRecursos() {
         try {
-            if (rs != null) {
+            if (rs != null && !rs.isClosed()) {
                 rs.close();
             }
-        } catch (SQLException e) {
-        }
-        try {
-            if (ps != null) {
+            if (ps != null && !ps.isClosed()) {
                 ps.close();
             }
+            conector.desconectar();
         } catch (SQLException e) {
+            Logger.getLogger(VentaImp.class.getName()).log(Level.WARNING, "⚠️ Error al cerrar recursos", e);
         }
-        conector.desconectar();
     }
 }

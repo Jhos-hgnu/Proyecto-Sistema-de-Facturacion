@@ -12,6 +12,7 @@ import Modelo.ModeloProducto;
 import Modelo.ModeloRegistroCliente;
 import Modelo.ModeloVenta;
 import Modelo.ModeloVistaInicio;
+import Vistas.PanelVentas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -33,44 +34,59 @@ import javax.swing.table.DefaultTableModel;
  * @author jhosu
  */
 
- public class ControladorVentas implements MouseListener {
+public class ControladorVentas implements MouseListener {
 
     private ModeloVenta modelo;
+    private PanelVentas vista;
     private DefaultTableModel modeloTabla;
     private JTable tabla;
 
-    public ControladorVentas(ModeloVenta modelo) {
+    // 🔹 Nuevo constructor: recibe modelo y vista
+    public ControladorVentas(ModeloVenta modelo, PanelVentas vista) {
         this.modelo = modelo;
+        this.vista = vista;
 
         // Crear tabla de ventas
-        modeloTabla = new DefaultTableModel(new Object[]{"Producto", "Precio", "Cantidad", "Subtotal"}, 0);
+        modeloTabla = new DefaultTableModel(
+                new Object[]{"Producto", "Precio", "Cantidad", "Subtotal"}, 0);
         tabla = new JTable(modeloTabla);
 
         JScrollPane scroll = new JScrollPane(tabla);
         scroll.setBorder(BorderFactory.createTitledBorder("Carrito de compras"));
-
-        // Agregar la tabla al panel (si no tienes un contenedor, puedes crear uno)
-        modelo.getVistaVentas().add(scroll);
+        vista.add(scroll);
         scroll.setBounds(100, 380, 650, 120);
+
+        // Registrar eventos de los botones
+        vista.btnAgregar.addMouseListener(this);
+        vista.btnEliminar.addMouseListener(this);
+        vista.btnHacerVenta.addMouseListener(this);
     }
 
+    // =========================================
+    //         EVENTOS DEL RATÓN
+    // =========================================
     @Override
     public void mouseClicked(MouseEvent e) {
-        if (e.getComponent().equals(modelo.getVistaVentas().btnAgregar)) {
+        Object source = e.getSource();
+
+        if (source.equals(vista.btnAgregar)) {
             agregarProducto();
-        } else if (e.getComponent().equals(modelo.getVistaVentas().btnEliminar)) {
+        } else if (source.equals(vista.btnEliminar)) {
             eliminarProducto();
-        } else if (e.getComponent().equals(modelo.getVistaVentas().btnHacerVenta)) {
+        } else if (source.equals(vista.btnHacerVenta)) {
             hacerVenta();
         }
     }
 
+    // =========================================
+    //         MÉTODOS DE LÓGICA
+    // =========================================
     private void agregarProducto() {
-        String idVenta = modelo.getVistaVentas().txtIdVenta.getText();
-        String precioTxt = modelo.getVistaVentas().txtNIT.getText(); // usas txtNIT como precio
-        String cantidadTxt = modelo.getVistaVentas().txtDocumento.getText();
+        String idProducto = vista.txtIdVenta.getText();
+        String precioTxt = vista.txtNIT.getText(); // usas txtNIT como precio
+        String cantidadTxt = vista.txtDocumento.getText();
 
-        if (idVenta.isEmpty() || precioTxt.isEmpty() || cantidadTxt.isEmpty()) {
+        if (idProducto.isEmpty() || precioTxt.isEmpty() || cantidadTxt.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Completa los campos de producto, precio y cantidad.");
             return;
         }
@@ -80,7 +96,7 @@ import javax.swing.table.DefaultTableModel;
             int cantidad = Integer.parseInt(cantidadTxt);
             double subtotal = precio * cantidad;
 
-            modeloTabla.addRow(new Object[]{idVenta, precio, cantidad, subtotal});
+            modeloTabla.addRow(new Object[]{idProducto, precio, cantidad, subtotal});
             limpiarCampos();
             calcularTotal();
 
@@ -115,22 +131,24 @@ import javax.swing.table.DefaultTableModel;
         for (int i = 0; i < modeloTabla.getRowCount(); i++) {
             total += (double) modeloTabla.getValueAt(i, 3);
         }
-        modelo.getVistaVentas().txtTotal.setText(String.valueOf(total));
+        vista.txtTotal.setText(String.valueOf(total));
         return total;
     }
 
     private void limpiarCampos() {
-        modelo.getVistaVentas().txtIdVenta.setText("");
-        modelo.getVistaVentas().txtNIT.setText("");
-        modelo.getVistaVentas().txtDocumento.setText("");
+        vista.txtIdVenta.setText("");
+        vista.txtNIT.setText("");
+        vista.txtDocumento.setText("");
     }
 
     private void limpiarTabla() {
         modeloTabla.setRowCount(0);
-        modelo.getVistaVentas().txtTotal.setText("");
+        vista.txtTotal.setText("");
     }
 
-    // Cambios visuales al pasar el mouse
+    // =========================================
+    //        EFECTOS VISUALES (opcional)
+    // =========================================
     @Override
     public void mouseEntered(MouseEvent e) {
         if (e.getComponent() instanceof JPanel) {
