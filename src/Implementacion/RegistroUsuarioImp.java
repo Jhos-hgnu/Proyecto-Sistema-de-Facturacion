@@ -25,26 +25,26 @@ public class RegistroUsuarioImp implements IRegistroUsuario {
         boolean resultado = false;
 
         conector.conectar();
-        try {
-
-            ps = conector.preparar(sql.getAGREGAR_USUARIO());
-
-            ps.setString(1, modelo.getNombreUsuario());
-            ps.setString(2, modelo.getApellidoUsuario());
-            ps.setString(3, modelo.getNumeroUsuario());
-            ps.setString(4, modelo.getEmailUsuario());
-            ps.setString(5, modelo.getUsuario());
-            ps.setString(6, modelo.getContraseniaUsuario());
-            ps.setString(7, modelo.getTipoUsuario());
-            ps.setBoolean(8, modelo.isActivoUsuario());
-
-            int filasAfectadas = ps.executeUpdate();
-            resultado = (filasAfectadas > 0);
-
-        } catch (SQLException e) {
-            resultado = false;
-            System.out.println("Error metodo GuardarUsuario " + e);
-        }
+//        try {
+//
+//            ps = conector.preparar(sql.getAGREGAR_USUARIO());
+//
+//            ps.setString(1, modelo.getNombreUsuario());
+//            ps.setString(2, modelo.getApellidoUsuario());
+//            ps.setString(3, modelo.getNumeroUsuario());
+//            ps.setString(4, modelo.getEmailUsuario());
+//            ps.setString(5, modelo.getUsuario());
+//            ps.setString(6, modelo.getContraseniaUsuario());
+//            ps.setString(7, modelo.getTipoUsuario());
+//            ps.setBoolean(8, modelo.isActivoUsuario());
+//
+//            int filasAfectadas = ps.executeUpdate();
+//            resultado = (filasAfectadas > 0);
+//
+//        } catch (SQLException e) {
+//            resultado = false;
+//            System.out.println("Error metodo GuardarUsuario " + e);
+//        }
         return resultado;
     }
 

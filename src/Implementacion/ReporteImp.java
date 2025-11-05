@@ -28,7 +28,8 @@ public class ReporteImp implements IReportes {
     @Override
     public ResultSet obtenerVentasDelDia() throws SQLException {
         conectarBD();
-        return ejecutarConsulta(sql.getOBTENER_VENTAS_DIA());
+//        return ejecutarConsulta(sql.getOBTENER_VENTAS_DIA());
+    return null;
     }
 
     private void conectarBD() throws SQLException {

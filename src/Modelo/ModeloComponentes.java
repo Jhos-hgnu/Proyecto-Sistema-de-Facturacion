@@ -36,7 +36,7 @@ public class ModeloComponentes {
     public boolean guardarEnBD() {
         Connection conn = null;
         try {
-            conn = new DBConnection().getConexion();
+//            conn = new DBConnection().getConexion();
             conn.setAutoCommit(false); 
 
             String sqlProd = "INSERT INTO productos (nombre_oficial, descripcion, codigo_barras, requiere_receta, activo) VALUES (?, ?, ?, ?, ?)";

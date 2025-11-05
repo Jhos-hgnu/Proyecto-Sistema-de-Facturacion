@@ -16,7 +16,8 @@ public class InventarioImp implements Iinventario {
     @Override
     public ResultSet obtenerRegistroLotes() throws SQLException {
         conectarBD();  
-        return ejecutarConsulta(sql.getOBTENER_LOTES_ACTIVOS());
+//        return ejecutarConsulta(sql.getOBTENER_LOTES_ACTIVOS());
+return null;
     }
 
     @Override

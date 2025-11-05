@@ -51,10 +51,10 @@ public class VentaImp implements IVenta {
         conector.conectar();
         try {
             // 🔹 Obtener el siguiente ID desde Oracle
-            long nuevoIdVenta = conector.obtenerSiguienteId("SEQ_VENTAS");
-            modelo.setIdVenta(nuevoIdVenta);
+//            long nuevoIdVenta = conector.obtenerSiguienteId("SEQ_VENTAS");
+//            modelo.setIdVenta(nuevoIdVenta);
 
-            ps = conector.preparar(sql.getHACER_VENTA());
+//            ps = conector.preparar(sql.getHACER_VENTA());
 
             ps.setLong(1, modelo.getIdVenta());
             ps.setString(2, modelo.getNit());
@@ -69,7 +69,7 @@ public class VentaImp implements IVenta {
 
             resultado = ps.executeUpdate() > 0;
 
-            System.out.println("🧾 Venta registrada con ID: " + nuevoIdVenta);
+//            System.out.println("🧾 Venta registrada con ID: " + nuevoIdVenta);
 
         } catch (SQLException e) {
             Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, "❌ Error al insertar venta", e);
@@ -88,27 +88,27 @@ public class VentaImp implements IVenta {
         boolean resultado = false;
         conector.conectar();
 
-        try {
-            ps = conector.preparar(sql.getINSERTAR_DETALLE_VENTA());
-
-            /*
-              SQL esperado:
-              INSERT INTO detalle_ventas (id_venta, producto, precio, cantidad, subtotal)
-              VALUES (?, ?, ?, ?, ?);
-             */
-            ps.setLong(1, modelo.getIdVenta());
-            ps.setString(2, modelo.getProducto());
-            ps.setDouble(3, modelo.getPrecio());
-            ps.setInt(4, modelo.getCantidad());
-            ps.setDouble(5, modelo.getSubtotal());
-
-            resultado = ps.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, "❌ Error al guardar detalle de venta", e);
-        } finally {
-            cerrarRecursos();
-        }
+//        try {
+//            ps = conector.preparar(sql.getINSERTAR_DETALLE_VENTA());
+//
+//            /*
+//              SQL esperado:
+//              INSERT INTO detalle_ventas (id_venta, producto, precio, cantidad, subtotal)
+//              VALUES (?, ?, ?, ?, ?);
+//             */
+//            ps.setLong(1, modelo.getIdVenta());
+//            ps.setString(2, modelo.getProducto());
+//            ps.setDouble(3, modelo.getPrecio());
+//            ps.setInt(4, modelo.getCantidad());
+//            ps.setDouble(5, modelo.getSubtotal());
+//
+//            resultado = ps.executeUpdate() > 0;
+//
+//        } catch (SQLException e) {
+//            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, "❌ Error al guardar detalle de venta", e);
+//        } finally {
+//            cerrarRecursos();
+//        }
 
         return resultado;
     }
@@ -120,11 +120,11 @@ public class VentaImp implements IVenta {
     public ModeloProducto buscarProducto(String nombreP, String codigoB) {
         ModeloProducto modelo = null;
         boolean buscarPorNombre = nombreP != null && !nombreP.trim().isEmpty();
-        String sqlEjecutar = buscarPorNombre ? sql.getBUSCAR_PRODUCTOS_NOMBRES() : sql.getBUSCAR_PRODUCTO_CODIGO();
+//        String sqlEjecutar = buscarPorNombre ? sql.getBUSCAR_PRODUCTOS_NOMBRES() : sql.getBUSCAR_PRODUCTO_CODIGO();
 
         conector.conectar();
         try {
-            ps = conector.preparar(sqlEjecutar);
+//            ps = conector.preparar(sqlEjecutar);
 
             if (buscarPorNombre) {
                 ps.setString(1, "%" + nombreP + "%");
@@ -158,36 +158,36 @@ public class VentaImp implements IVenta {
     /**
      * Consulta un cliente por NIT o número de identificación.
      */
-    @Override
-    public ModeloClientesVentas consultarCliente(String criterioNitId) {
-        ModeloClientesVentas modelo = null;
-        conector.conectar();
-
-        try {
-            ps = conector.preparar(sql.getBUSCAR_CLIENTE_NIT_IDENTIFICACION());
-            ps.setString(1, criterioNitId);
-            ps.setString(2, criterioNitId);
-
-            rs = ps.executeQuery();
-            if (rs.next()) {
-                modelo = new ModeloClientesVentas();
-                modelo.setIdCliente(rs.getInt("id_cliente"));
-                modelo.setNombre(rs.getString("nombre"));
-                modelo.setDireccion(rs.getString("direccion"));
-                modelo.setTelefono(rs.getString("telefono"));
-                modelo.setCorreo(rs.getString("correo"));
-                modelo.setNit(rs.getString("nit"));
-                modelo.setDpi(rs.getString("dpi"));
-            }
-
-        } catch (SQLException e) {
-            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, "❌ Error al consultar cliente", e);
-        } finally {
-            cerrarRecursos();
-        }
-
-        return modelo;
-    }
+//    @Override
+//    public ModeloClientesVentas consultarCliente(String criterioNitId) {
+//        ModeloClientesVentas modelo = null;
+//        conector.conectar();
+//
+//        try {
+//            ps = conector.preparar(sql.getBUSCAR_CLIENTE_NIT_IDENTIFICACION());
+//            ps.setString(1, criterioNitId);
+//            ps.setString(2, criterioNitId);
+//
+//            rs = ps.executeQuery();
+//            if (rs.next()) {
+//                modelo = new ModeloClientesVentas();
+//                modelo.setIdCliente(rs.getInt("id_cliente"));
+//                modelo.setNombre(rs.getString("nombre"));
+//                modelo.setDireccion(rs.getString("direccion"));
+//                modelo.setTelefono(rs.getString("telefono"));
+//                modelo.setCorreo(rs.getString("correo"));
+//                modelo.setNit(rs.getString("nit"));
+//                modelo.setDpi(rs.getString("dpi"));
+//            }
+//
+//        } catch (SQLException e) {
+//            Logger.getLogger(VentaImp.class.getName()).log(Level.SEVERE, "❌ Error al consultar cliente", e);
+//        } finally {
+//            cerrarRecursos();
+//        }
+//
+//        return modelo;
+//    }
 
     /**
      * Cierra los recursos abiertos (ResultSet, PreparedStatement y conexión).

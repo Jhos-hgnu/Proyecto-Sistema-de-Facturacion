@@ -34,8 +34,8 @@ public class VentasDAO {
         conector.conectar();
 
         try {
-            long nuevoId = conector.obtenerSiguienteId("SEQ_VENTAS");
-            venta.setIdVenta(nuevoId);
+//            long nuevoId = conector.obtenerSiguienteId("SEQ_VENTAS");
+//            venta.setIdVenta(nuevoId);
 
             String sql = """
                     INSERT INTO ventas 
@@ -64,8 +64,8 @@ public class VentasDAO {
 
             resultado = ps.executeUpdate() > 0;
 
-            if (resultado)
-                System.out.println("✅ Venta insertada correctamente con ID: " + nuevoId);
+//            if (resultado)
+//                System.out.println("✅ Venta insertada correctamente con ID: " + nuevoId);
 
         } catch (SQLException e) {
             Logger.getLogger(VentasDAO.class.getName()).log(Level.SEVERE, "❌ Error al insertar venta", e);

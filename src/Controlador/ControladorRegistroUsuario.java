@@ -66,7 +66,7 @@ public class ControladorRegistroUsuario implements MouseListener {
                 || modelo.getVistaRegistro().txtPassword.getPassword().equals("")
                 || modelo.getVistaRegistro().txtTelefono.getText().isEmpty()
                 || modelo.getVistaRegistro().txtEmail.getText().isEmpty()
-                || modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem() == null
+//                || modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem() == null
                 || modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem() == null) {
 //warning
             JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ADVERTENCIA \"DATOS VACIOS\"", JOptionPane.WARNING_MESSAGE);
@@ -83,7 +83,7 @@ public class ControladorRegistroUsuario implements MouseListener {
                 || modelo.getVistaRegistro().txtPassword.getPassword().equals("")
                 || modelo.getVistaRegistro().txtTelefono.getText().isEmpty()
                 || modelo.getVistaRegistro().txtEmail.getText().isEmpty()
-                || modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem() == null
+//                || modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem() == null
                 || modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem() == null) {
 //warning
             JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ADVERTENCIA \"DATOS VACIOS\"", JOptionPane.WARNING_MESSAGE);
@@ -100,11 +100,11 @@ public class ControladorRegistroUsuario implements MouseListener {
         String contraseniaIngresada = String.valueOf(modelo.getVistaRegistro().txtPassword.getPassword());
         String telefonoIngresado = modelo.getVistaRegistro().txtTelefono.getText();
         String emailIngresado = modelo.getVistaRegistro().txtEmail.getText();
-        boolean usuarioActivo = validarUsuarioActivo(String.valueOf(modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem()));
+//        boolean usuarioActivo = validarUsuarioActivo(String.valueOf(modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem()));
         //String usuarioActivo = String.valueOf(modelo.getVistaRegistro().boxUsuarioActivo.getSelectedItem());
         String tipoUsuario = String.valueOf(modelo.getVistaRegistro().boxTipoUsuario.getSelectedItem());
         String nombreUsuarioInicio = modelo.getVistaRegistro().txtIdUsuario.getText();
-        creacionDeUsuario(nombreIngresado, apellidoIngresado, telefonoIngresado, emailIngresado, nombreUsuarioInicio, contraseniaIngresada, tipoUsuario, usuarioActivo);
+//        creacionDeUsuario(nombreIngresado, apellidoIngresado, telefonoIngresado, emailIngresado, nombreUsuarioInicio, contraseniaIngresada, tipoUsuario, usuarioActivo);
     }
 
     public void creacionDeUsuario(String nombreIngre, String apellidoIngre, String telefonoIngre, String emailIngre, String nombreUsuario, String contraIngre, String tipoUsuario, boolean usuarioActivo) {
@@ -137,7 +137,7 @@ public class ControladorRegistroUsuario implements MouseListener {
         modelo.getVistaRegistro().txtPassword.setText("");
         modelo.getVistaRegistro().txtTelefono.setText("");
         modelo.getVistaRegistro().txtEmail.setText("");
-        modelo.getVistaRegistro().boxUsuarioActivo.setSelectedIndex(0);
+//        modelo.getVistaRegistro().boxUsuarioActivo.setSelectedIndex(0);
         modelo.getVistaRegistro().boxTipoUsuario.setSelectedIndex(0);
         modelo.getVistaRegistro().txtIdUsuario.setText("");
     }

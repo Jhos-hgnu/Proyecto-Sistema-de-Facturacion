@@ -21,19 +21,21 @@ public class ComponentesImpl implements IComponentesProducto {
 
     @Override
     public boolean insertarComponenteProducto(int idProducto, int idComponente, String concentracion) {
-        try (Connection conn = connection.getConexion();
-     PreparedStatement ps = conn.prepareStatement(sql.getAGREGAR_COMPONENTE_PRODUCTO())) {
-
-            ps.setInt(1, idProducto);
-            ps.setInt(2, idComponente);
-            ps.setString(3, concentracion);
-
-            return ps.executeUpdate() > 0;
-
-        } catch (SQLException e) {
-            e.printStackTrace(); 
-            return false;
-        }
+//        try (Connection conn = connection.getConexion();
+//     PreparedStatement ps = conn.prepareStatement(sql.getAGREGAR_COMPONENTE_PRODUCTO())) {
+//
+//            ps.setInt(1, idProducto);
+//            ps.setInt(2, idComponente);
+//            ps.setString(3, concentracion);
+//
+//            return ps.executeUpdate() > 0;
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace(); 
+//            return false;
+//        }
+//Return agregado
+    return false;
     }
 }
 

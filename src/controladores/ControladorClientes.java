@@ -131,7 +131,7 @@ public class ControladorClientes implements MouseListener {
         vista.txtTelefono.setText(cliente.getTelefono());
         vista.txtLimiteCredito.setText(cliente.getIdentificacion());
         vista.txtNIT.setText(cliente.getNit());
-        vista.Subsidio.setSelected(cliente.isTieneSubsidio());
+//        vista.Subsidio.setSelected(cliente.isTieneSubsidio());
     }
 
     private void limpiarFormulario() {
@@ -140,7 +140,7 @@ public class ControladorClientes implements MouseListener {
         vista.txtTelefono.setText("");
         vista.txtLimiteCredito.setText("");
         vista.txtNIT.setText("");
-        vista.Subsidio.setSelected(false);
+//        vista.Subsidio.setSelected(false);
         vista.tblclientes.clearSelection();
     }
 
@@ -158,7 +158,7 @@ public class ControladorClientes implements MouseListener {
         String telefono = vista.txtTelefono.getText().trim();
         String identificacion = vista.txtLimiteCredito.getText().trim();
         String nit = vista.txtNIT.getText().trim();
-        boolean tieneSubsidio = vista.Subsidio.isSelected();
+//        boolean tieneSubsidio = vista.Subsidio.isSelected();
 
         if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || identificacion.isEmpty() || nit.isEmpty()) {
             JOptionPane.showMessageDialog(vista, "Por favor, complete todos los campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -171,7 +171,7 @@ public class ControladorClientes implements MouseListener {
         cliente.setTelefono(telefono);
         cliente.setIdentificacion(identificacion);
         cliente.setNit(nit);
-        cliente.setTieneSubsidio(tieneSubsidio);
+//        cliente.setTieneSubsidio(tieneSubsidio);
 
         return cliente;
     }

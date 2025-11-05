@@ -67,8 +67,8 @@ public class ControladorProducto implements MouseListener {
     public void inputIsEmptyAgregarP() {
         if (modelo.getVistaProducto().txtNombreProducto.getText().isEmpty()
                 || modelo.getVistaProducto().txtCodigoBarras.getText().isEmpty()
-                || modelo.getVistaProducto().boxActivo.getSelectedItem() == null
-                || modelo.getVistaProducto().boxReceta.getSelectedItem() == null
+//                || modelo.getVistaProducto().boxActivo.getSelectedItem() == null
+//                || modelo.getVistaProducto().boxReceta.getSelectedItem() == null
                 || modelo.getVistaProducto().txtDescripcion.getText().isEmpty()) {
             JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ERROR \"DATOS VACIOS\"", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -88,12 +88,12 @@ public class ControladorProducto implements MouseListener {
     
     private void inputIsEmptyActualizar(){
         if(modelo.getVistaProducto().txtNombreProducto.getText().isEmpty()
-                || modelo.getVistaProducto().txtNombreAlterno.getText().isEmpty()
-                || modelo.getVistaProducto().txtNumeroLote.getText().isEmpty()
-                || modelo.getVistaProducto().txtCantidad.getText().isEmpty()
-                || modelo.getVistaProducto().txtPrecioCompra.getText().isEmpty()
-                || modelo.getVistaProducto().txtPrecioVenta.getText().isEmpty()
-                || modelo.getVistaProducto().txtFechaVencimiento.getText().isEmpty()
+//                || modelo.getVistaProducto().txtNombreAlterno.getText().isEmpty()
+//                || modelo.getVistaProducto().txtNumeroLote.getText().isEmpty()
+//                || modelo.getVistaProducto().txtCantidad.getText().isEmpty()
+//                || modelo.getVistaProducto().txtPrecioCompra.getText().isEmpty()
+//                || modelo.getVistaProducto().txtPrecioVenta.getText().isEmpty()
+//                || modelo.getVistaProducto().txtFechaVencimiento.getText().isEmpty()
                 || modelo.getVistaProducto().txtCodigoBarras.getText().isEmpty()){
             
         } else {
@@ -106,18 +106,18 @@ public class ControladorProducto implements MouseListener {
         String nombreIngresado = modelo.getVistaProducto().txtNombreProducto.getText();
         String descripcionIngresada = modelo.getVistaProducto().txtDescripcion.getText();
         String codigoIngresado = modelo.getVistaProducto().txtCodigoBarras.getText();
-        String receta = String.valueOf(modelo.getVistaProducto().boxReceta.getSelectedItem());
-        String activo = String.valueOf(modelo.getVistaProducto().boxActivo.getSelectedItem());
-        String nombreAlternativo = modelo.getVistaProducto().txtNombreAlterno.getText();
+//        String receta = String.valueOf(modelo.getVistaProducto().boxReceta.getSelectedItem());
+//        String activo = String.valueOf(modelo.getVistaProducto().boxActivo.getSelectedItem());
+//        String nombreAlternativo = modelo.getVistaProducto().txtNombreAlterno.getText();
  
-        String numeroLote = modelo.getVistaProducto().txtNumeroLote.getText();
-        String fechaVencimiento = modelo.getVistaProducto().txtFechaVencimiento.getText();
-        String fechaFabricacion = modelo.getVistaProducto().txtFechaFabricacion.getText();
-        String cantidad = modelo.getVistaProducto().txtCantidad.getText();
-        BigDecimal precioCompra = new BigDecimal(modelo.getVistaProducto().txtPrecioCompra.getText());
+//        String numeroLote = modelo.getVistaProducto().txtNumeroLote.getText();
+//        String fechaVencimiento = modelo.getVistaProducto().txtFechaVencimiento.getText();
+//        String fechaFabricacion = modelo.getVistaProducto().txtFechaFabricacion.getText();
+//        String cantidad = modelo.getVistaProducto().txtCantidad.getText();
+//        BigDecimal precioCompra = new BigDecimal(modelo.getVistaProducto().txtPrecioCompra.getText());
         BigDecimal precioVenta = new BigDecimal(modelo.getVistaProducto().txtPrecioVenta.getText());
 
-        registrarProducto(nombreIngresado, descripcionIngresada, codigoIngresado, receta, activo, numeroLote, fechaVencimiento, fechaFabricacion, cantidad, precioCompra, precioVenta, nombreAlternativo);
+//        registrarProducto(nombreIngresado, descripcionIngresada, codigoIngresado, receta, activo, numeroLote, fechaVencimiento, fechaFabricacion, cantidad, precioCompra, precioVenta, nombreAlternativo);
 
     }
 
@@ -227,14 +227,14 @@ public class ControladorProducto implements MouseListener {
         modelo.getVistaProducto().txtNombreProducto.setText("");
         modelo.getVistaProducto().txtDescripcion.setText("");
         modelo.getVistaProducto().txtCodigoBarras.setText("");
-        modelo.getVistaProducto().boxActivo.setSelectedIndex(0);
-        modelo.getVistaProducto().boxReceta.setSelectedIndex(0);
-        modelo.getVistaProducto().txtNumeroLote.setText("");
-        modelo.getVistaProducto().txtCantidad.setText("");
-        modelo.getVistaProducto().txtPrecioCompra.setText("");
-        modelo.getVistaProducto().txtPrecioVenta.setText("");
-        modelo.getVistaProducto().txtFechaVencimiento.setText("");
-        modelo.getVistaProducto().txtFechaFabricacion.setText("");
+//        modelo.getVistaProducto().boxActivo.setSelectedIndex(0);
+//        modelo.getVistaProducto().boxReceta.setSelectedIndex(0);
+//        modelo.getVistaProducto().txtNumeroLote.setText("");
+//        modelo.getVistaProducto().txtCantidad.setText("");
+//        modelo.getVistaProducto().txtPrecioCompra.setText("");
+//        modelo.getVistaProducto().txtPrecioVenta.setText("");
+//        modelo.getVistaProducto().txtFechaVencimiento.setText("");
+//        modelo.getVistaProducto().txtFechaFabricacion.setText("");
         
         
     }
@@ -252,21 +252,21 @@ public class ControladorProducto implements MouseListener {
         modelo.getVistaProducto().txtIdProducto.setText(String.valueOf(modeloB.getIdProducto()));
         boolean usuarioActivo = modeloB.isActivoP();
 
-        if (usuarioActivo == true) {
-            modelo.getVistaProducto().boxActivo.setSelectedIndex(0);
-        } else {
-            modelo.getVistaProducto().boxActivo.setSelectedIndex(1);
-        }
-
-        boolean requiereReceta = modeloB.isRequiereRecetaP();
-
-        if (requiereReceta == true) {
-            modelo.getVistaProducto().boxReceta.setSelectedIndex(0);
-        } else {
-            modelo.getVistaProducto().boxReceta.setSelectedIndex(1);
-        }
-        modelo.getVistaProducto().txtFechaFabricacion.setText(modeloB.getFechaRegistro());
-        cambiarElementosB();
+//        if (usuarioActivo == true) {
+//            modelo.getVistaProducto().boxActivo.setSelectedIndex(0);
+//        } else {
+//            modelo.getVistaProducto().boxActivo.setSelectedIndex(1);
+//        }
+//
+//        boolean requiereReceta = modeloB.isRequiereRecetaP();
+//
+//        if (requiereReceta == true) {
+//            modelo.getVistaProducto().boxReceta.setSelectedIndex(0);
+//        } else {
+//            modelo.getVistaProducto().boxReceta.setSelectedIndex(1);
+//        }
+//        modelo.getVistaProducto().txtFechaFabricacion.setText(modeloB.getFechaRegistro());
+//        cambiarElementosB();
     }
     
     private void cambiarElementosB(){
@@ -281,16 +281,16 @@ public class ControladorProducto implements MouseListener {
     
     private void cambiarElementosLimpiar(){
         modelo.getVistaProducto().txtNombreProducto.setText("");
-        modelo.getVistaProducto().txtNombreAlterno.setText("");
-        modelo.getVistaProducto().txtNumeroLote.setText("");
-        modelo.getVistaProducto().txtCantidad.setText("");
-        modelo.getVistaProducto().txtPrecioCompra.setText("");
-        modelo.getVistaProducto().txtPrecioVenta.setText("");
-        modelo.getVistaProducto().boxReceta.setSelectedIndex(0);
-        modelo.getVistaProducto().boxActivo.setSelectedIndex(0);
-        modelo.getVistaProducto().txtCodigoBarras.setText("");
-        modelo.getVistaProducto().txtFechaVencimiento.setText("");
-        modelo.getVistaProducto().txtFechaFabricacion.setText("");
+//        modelo.getVistaProducto().txtNombreAlterno.setText("");
+//        modelo.getVistaProducto().txtNumeroLote.setText("");
+//        modelo.getVistaProducto().txtCantidad.setText("");
+//        modelo.getVistaProducto().txtPrecioCompra.setText("");
+//        modelo.getVistaProducto().txtPrecioVenta.setText("");
+//        modelo.getVistaProducto().boxReceta.setSelectedIndex(0);
+//        modelo.getVistaProducto().boxActivo.setSelectedIndex(0);
+//        modelo.getVistaProducto().txtCodigoBarras.setText("");
+//        modelo.getVistaProducto().txtFechaVencimiento.setText("");
+//        modelo.getVistaProducto().txtFechaFabricacion.setText("");
         modelo.getVistaProducto().btnActualizar.setVisible(false);
         modelo.getVistaProducto().btnEliminar.setVisible(false);
         modelo.getVistaProducto().btnAgregar.setVisible(true);
