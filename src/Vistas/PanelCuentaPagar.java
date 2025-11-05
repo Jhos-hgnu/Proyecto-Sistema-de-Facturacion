@@ -4,18 +4,143 @@
  */
 package Vistas;
 
+
+import javax.swing.JTextField;
+import controladores.ControladorCuentaPagar;
+import Implementacion.CuentaPorPagarImpl;
 /**
  *
  * @author cindy
  */
 public class PanelCuentaPagar extends javax.swing.JPanel {
+    
+private ControladorCuentaPagar controlador;
+private CuentaPorPagarImpl dao;
 
     /**
      * Creates new form PanelCuentaPagar
      */
     public PanelCuentaPagar() {
         initComponents();
+        
+    dao = new CuentaPorPagarImpl();
+    controlador = new ControladorCuentaPagar(this, dao);
+        
     }
+    
+    
+    
+    
+    
+    //--- metodos get y set para modificar los labels 
+
+    public JTextField getTxtEstadoPago() {
+        return txtEstadoPago;
+    }
+
+    public void setTxtEstadoPago(JTextField txtEstadoPago) {
+        this.txtEstadoPago = txtEstadoPago;
+    }
+
+    public JTextField getTxtFechaEmision() {
+        return txtFechaEmision;
+    }
+
+    public void setTxtFechaEmision(JTextField txtFechaEmision) {
+        this.txtFechaEmision = txtFechaEmision;
+    }
+
+    public JTextField getTxtFechaVencimiento() {
+        return txtFechaVencimiento;
+    }
+
+    public void setTxtFechaVencimiento(JTextField txtFechaVencimiento) {
+        this.txtFechaVencimiento = txtFechaVencimiento;
+    }
+
+    public JTextField getTxtIdCompra() {
+        return txtIdCompra;
+    }
+
+    public void setTxtIdCompra(JTextField txtIdCompra) {
+        this.txtIdCompra = txtIdCompra;
+    }
+
+    public JTextField getTxtIdCuentaPago() {
+        return txtIdCuentaPago;
+    }
+
+    public void setTxtIdCuentaPago(JTextField txtIdCuentaPago) {
+        this.txtIdCuentaPago = txtIdCuentaPago;
+    }
+
+    public JTextField getTxtMontoTotal() {
+        return txtMontoTotal;
+    }
+
+    public void setTxtMontoTotal(JTextField txtMontoTotal) {
+        this.txtMontoTotal = txtMontoTotal;
+    }
+
+    public JTextField getTxtSaldoPendiente() {
+        return txtSaldoPendiente;
+    }
+
+    public void setTxtSaldoPendiente(JTextField txtSaldoPendiente) {
+        this.txtSaldoPendiente = txtSaldoPendiente;
+    }
+    
+    
+    
+    
+    //esta parte solo funciona para correr este jframe
+    
+        public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VistaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VistaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VistaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VistaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+    public void run() {
+        javax.swing.JFrame frame = new javax.swing.JFrame("Prueba - Cuentas por Pagar");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(new PanelCuentaPagar());
+        frame.pack(); // ajusta tamaño al contenido
+        frame.setSize(850, 700); // o fija el tamaño manualmente
+        frame.setLocationRelativeTo(null); // centra la ventana
+        frame.setVisible(true);
+    }
+        });
+
+
+    }
+        
+    //esta parte solo funciona para correr este jframe     
+
+ 
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,12 +171,9 @@ public class PanelCuentaPagar extends javax.swing.JPanel {
         txtFechaVencimiento = new javax.swing.JTextField();
         txtMontoTotal = new javax.swing.JTextField();
         txtSaldoPendiente = new javax.swing.JTextField();
-        btnAgregar = new javax.swing.JPanel();
-        agregar = new javax.swing.JLabel();
-        btnActualizar = new javax.swing.JPanel();
-        actualizar = new javax.swing.JLabel();
-        btnEliminar = new javax.swing.JPanel();
-        eliminar = new javax.swing.JLabel();
+        btneliminar = new javax.swing.JButton();
+        btnagregar = new javax.swing.JButton();
+        btnactualizar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(28, 95, 118));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +191,7 @@ public class PanelCuentaPagar extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("X");
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnSalir.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-1, 0, 30, 30));
 
         add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
@@ -227,44 +349,29 @@ public class PanelCuentaPagar extends javax.swing.JPanel {
         });
         add(txtSaldoPendiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 130, -1));
 
-        btnAgregar.setBackground(new java.awt.Color(75, 128, 146));
-        btnAgregar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnAgregar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        btneliminar.setText("Eliminar");
+        btneliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminarActionPerformed(evt);
+            }
+        });
+        add(btneliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 490, -1, -1));
 
-        agregar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        agregar.setForeground(new java.awt.Color(255, 255, 255));
-        agregar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        agregar.setText("Agregar");
-        agregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnAgregar.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 30));
+        btnagregar.setText("Agregar");
+        btnagregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnagregarActionPerformed(evt);
+            }
+        });
+        add(btnagregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 490, -1, -1));
 
-        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 490, 90, 30));
-
-        btnActualizar.setBackground(new java.awt.Color(75, 128, 146));
-        btnActualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnActualizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        actualizar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        actualizar.setForeground(new java.awt.Color(255, 255, 255));
-        actualizar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        actualizar.setText("Actualizar");
-        actualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnActualizar.add(actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 70, 30));
-
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, 90, 30));
-
-        btnEliminar.setBackground(new java.awt.Color(75, 128, 146));
-        btnEliminar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnEliminar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        eliminar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        eliminar.setForeground(new java.awt.Color(255, 255, 255));
-        eliminar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        eliminar.setText("Eliminar");
-        eliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnEliminar.add(eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 50, 30));
-
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 490, 90, 30));
+        btnactualizar.setText("Actualizar");
+        btnactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnactualizarActionPerformed(evt);
+            }
+        });
+        add(btnactualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseClicked
@@ -299,6 +406,19 @@ public class PanelCuentaPagar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSaldoPendienteActionPerformed
 
+    private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
+       controlador.eliminarCuenta();
+  
+    }//GEN-LAST:event_btneliminarActionPerformed
+
+    private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
+        controlador.agregarCuenta();
+    }//GEN-LAST:event_btnagregarActionPerformed
+
+    private void btnactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnactualizarActionPerformed
+        controlador.actualizarCuenta();
+    }//GEN-LAST:event_btnactualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel IDCliente;
@@ -308,13 +428,10 @@ public class PanelCuentaPagar extends javax.swing.JPanel {
     private javax.swing.JLabel IDCliente4;
     private javax.swing.JLabel IDCliente5;
     private javax.swing.JLabel IDCliente6;
-    public javax.swing.JLabel actualizar;
-    public javax.swing.JLabel agregar;
-    public javax.swing.JPanel btnActualizar;
-    public javax.swing.JPanel btnAgregar;
-    public javax.swing.JPanel btnEliminar;
     public javax.swing.JPanel btnSalir;
-    private javax.swing.JLabel eliminar;
+    private javax.swing.JButton btnactualizar;
+    private javax.swing.JButton btnagregar;
+    private javax.swing.JButton btneliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel marcaAgua;
     private javax.swing.JSeparator separador;
