@@ -11,7 +11,8 @@ import Vistas.VistaReportes;
  * @author jhosu
  */
 public class ModeloVistaReportes {
-    
+   
+    //No usado
     VistaReportes vReportes;
 
     public ModeloVistaReportes() {

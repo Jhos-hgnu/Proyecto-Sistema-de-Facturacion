@@ -1,35 +1,34 @@
 package Controlador;
 
 import Modelo.ModeloReporte;
+import Vistas.VistaAdmin;
+import Vistas.VistaReportes;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class ControladorReportes implements MouseListener {
-   
-     private final ModeloReporte modelo;
+public class ControladorReportes {
 
-    public ControladorReportes(ModeloReporte modelo) {
+    private ModeloReporte modelo;
+    private VistaReportes vista;
+
+    public ControladorReportes(ModeloReporte modelo, VistaReportes vista) {
         this.modelo = modelo;
+        this.vista = vista;
+        configurarListeners();
     }
 
-   @Override
-public void mouseClicked(MouseEvent e) {
-    Object fuente = e.getSource();
+    private void configurarListeners() {
+        vista.getBtnVolver().addActionListener(e -> volverMenuPrincipal());
 
-    if (fuente == modelo.vista.btnMostrarVentas) {
-        modelo.cargarVentasDelDiaEnTabla();
     }
 
-    if (fuente == modelo.vista.btnExportarPDF) {
-        modelo.exportarReporteADiaPDF(1);
+    private void volverMenuPrincipal() {
+        VistaAdmin vistaAD = new VistaAdmin();
+        vistaAD.setVisible(true);
+        vista.dispose();
+   
     }
-}
 
-
-
-    
-    @Override public void mousePressed(MouseEvent e) {}
-    @Override public void mouseReleased(MouseEvent e) {}
-    @Override public void mouseEntered(MouseEvent e) {}
-    @Override public void mouseExited(MouseEvent e) {}
 }

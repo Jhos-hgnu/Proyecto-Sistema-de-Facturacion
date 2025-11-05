@@ -103,7 +103,7 @@ public class ControladorVistaInicio implements MouseListener {
     private void redirigirTipoUsuario(String tipoUsuario) {
 //        final String ADMIN = "ADMINISTRADOR";
 //        final String VENDEDOR = "VENDEDOR";
-        final String ADMIN = "ADMIN";
+        final String ADMIN = "1";
         final String VENDEDOR = "VEN";
 
         if (ADMIN.equals(tipoUsuario)) {

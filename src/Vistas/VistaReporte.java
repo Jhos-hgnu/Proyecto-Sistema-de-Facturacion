@@ -25,11 +25,11 @@ public class VistaReporte extends javax.swing.JPanel {
         initComponents();
 
       
-        ModeloReporte modelo = new ModeloReporte(this);
+//        ModeloReporte modelo = new ModeloReporte(this);
     
 
-        ControladorReportes controlador = new ControladorReportes(modelo);
-        setControlador(controlador);
+//        ControladorReportes controlador = new ControladorReportes(modelo);
+//        setControlador(controlador);
     }
 
     /**
@@ -171,8 +171,8 @@ public class VistaReporte extends javax.swing.JPanel {
     private javax.swing.JLabel titulo1;
     // End of variables declaration//GEN-END:variables
 
-    public void setControlador(ControladorReportes controlador) {
-        btnExportarPDF.addMouseListener(controlador);
-        btnMostrarVentas.addMouseListener(controlador);
-    }
+//    public void setControlador(ControladorReportes controlador) {
+//        btnExportarPDF.addMouseListener(controlador);
+//        btnMostrarVentas.addMouseListener(controlador);
+//    }
 }
