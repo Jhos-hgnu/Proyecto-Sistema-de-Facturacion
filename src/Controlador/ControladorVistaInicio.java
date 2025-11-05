@@ -29,7 +29,7 @@ public class ControladorVistaInicio implements MouseListener {
 
     public ControladorVistaInicio(ModeloVistaInicio modelo) {
         this.modelo = modelo;
-        
+
         configurarEnter();
     }
 
@@ -38,7 +38,9 @@ public class ControladorVistaInicio implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getComponent().equals(modelo.getVistaInicio().btnAcceder)) {
-            inputIsEmpty();
+            //inputIsEmpty();
+            String user = modelo.getVistaInicio().txtUsuario.getText();
+            redirigirTipoUsuario(user);
         }
     }
 
@@ -84,8 +86,7 @@ public class ControladorVistaInicio implements MouseListener {
         }
         ModeloInicioUsuario modeloInicioUsuarioActivo = new ModeloInicioUsuario();
         redirigirTipoUsuario(tipoUsuario);
-        
-        
+
         modeloInicioUsuarioActivo.setUsuarioActual(usuarioEncontrado);
         modelo.setUsuario(usuarioEncontrado);
         modelo.setTipoUsuario(tipoUsuario);
@@ -100,8 +101,10 @@ public class ControladorVistaInicio implements MouseListener {
     }
 
     private void redirigirTipoUsuario(String tipoUsuario) {
-        final String ADMIN = "ADMINISTRADOR";
-        final String VENDEDOR = "VENDEDOR";
+//        final String ADMIN = "ADMINISTRADOR";
+//        final String VENDEDOR = "VENDEDOR";
+        final String ADMIN = "ADMIN";
+        final String VENDEDOR = "VEN";
 
         if (ADMIN.equals(tipoUsuario)) {
             VistaAdmin vistaAdmin = new VistaAdmin();
@@ -142,14 +145,14 @@ public class ControladorVistaInicio implements MouseListener {
             JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage(), "ERROR CRÍTICO", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    public void configurarEnter(){
+
+    public void configurarEnter() {
         JFrame frame = modelo.getVistaInicio();
         JPanel contentPanel = (JPanel) frame.getContentPane();
-        
+
         InputMap inputMap = contentPanel.getInputMap(JPanel.WHEN_IN_FOCUSED_WINDOW);
         ActionMap actionMap = contentPanel.getActionMap();
-        
+
         inputMap.put(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0), "validarInput");
         actionMap.put("validarInput", new AbstractAction() {
             @Override
@@ -157,10 +160,9 @@ public class ControladorVistaInicio implements MouseListener {
                 inputIsEmpty();
             }
         }
-        
         );
     }
- 
+
     public void limpiarDatos() {
         modelo.getVistaInicio().txtUsuario.setText("");
         modelo.getVistaInicio().txtPassword.setText("");
