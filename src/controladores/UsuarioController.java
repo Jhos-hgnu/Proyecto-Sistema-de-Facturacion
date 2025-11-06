@@ -29,3 +29,4 @@ public class UsuarioController {
     public Optional<Usuario> buscarPorEmail(String email) throws Exception { return dao.buscarPorEmail(email); }
     public List<Usuario> listar(int limit, int offset) throws Exception { return dao.listar(limit, offset); }
 }
+   
