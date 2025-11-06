@@ -2,15 +2,16 @@ package Controlador;
 
 import Implementacion.SesionInicioImp;
 import Modelo.ModeloInicioUsuario;
-import java.awt.Color;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import Modelo.ModeloVistaInicio;
 import Vistas.VistaAdmin;
 import Vistas.VistaVendedor;
-import java.awt.Cursor;
+
+import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
 import javax.swing.InputMap;
@@ -19,38 +20,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-/**
- *
- * @author jhosu
- */
 public class ControladorVistaInicio implements MouseListener {
 
-    ModeloVistaInicio modelo;
+    private final ModeloVistaInicio modelo;
+    private final SesionInicioImp implementacion = new SesionInicioImp();
 
     public ControladorVistaInicio(ModeloVistaInicio modelo) {
         this.modelo = modelo;
-
         configurarEnter();
     }
-
-    SesionInicioImp implementacion = new SesionInicioImp();
 
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getComponent().equals(modelo.getVistaInicio().btnAcceder)) {
-            //inputIsEmpty();
-            String user = modelo.getVistaInicio().txtUsuario.getText();
-            redirigirTipoUsuario(user);
+            inputIsEmpty(); // Dispara validación completa
         }
     }
 
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
+    @Override public void mousePressed(MouseEvent e) { }
+    @Override public void mouseReleased(MouseEvent e) { }
 
     @Override
     public void mouseEntered(MouseEvent e) {
@@ -66,7 +54,12 @@ public class ControladorVistaInicio implements MouseListener {
         }
     }
 
-    public void validarUsuario(String tipoUsuario, String usuarioIngresado, String contraIngresada, String usuarioEncontrado, String contraEncontrada, boolean usuarioActivo) {
+    public void validarUsuario(String tipoUsuario,
+                               String usuarioIngresado,
+                               String contraIngresada,
+                               String usuarioEncontrado,
+                               String contraEncontrada,
+                               boolean usuarioActivo) {
 
         if (tipoUsuario == null) {
             mostrarError("Error al Iniciar Sesión, usuario o contraseña incorrectos");
@@ -81,46 +74,69 @@ public class ControladorVistaInicio implements MouseListener {
         }
 
         if (!usuarioActivo) {
-            mostrarError("Error al Iniciar Sesión, el usuario dado de baja");
+            mostrarError("Error al Iniciar Sesión, el usuario está dado de baja");
+            limpiarDatos();
             return;
         }
-        ModeloInicioUsuario modeloInicioUsuarioActivo = new ModeloInicioUsuario();
-        redirigirTipoUsuario(tipoUsuario);
 
+        // Usuario OK: actualizar “sesión”/modelo y navegar
+        ModeloInicioUsuario modeloInicioUsuarioActivo = new ModeloInicioUsuario();
         modeloInicioUsuarioActivo.setUsuarioActual(usuarioEncontrado);
+
         modelo.setUsuario(usuarioEncontrado);
-        modelo.setTipoUsuario(tipoUsuario);
+        ModeloVistaInicio.setTipoUsuario(tipoUsuario);
+        modelo.setUsuarioActivo(true);
+
+        redirigirSegunTipo(tipoUsuario);
     }
 
-    private boolean credencialesCorrectas(String usuarioIngresado, String contraIngresada, String usuarioEncontrado, String contraEncontrada) {
-        return usuarioIngresado.equals(usuarioEncontrado) && contraIngresada.equals(contraEncontrada);
+    private boolean credencialesCorrectas(String usuarioIngresado,
+                                          String contraIngresada,
+                                          String usuarioEncontrado,
+                                          String contraEncontrada) {
+        return usuarioIngresado != null
+                && contraIngresada != null
+                && usuarioIngresado.equals(usuarioEncontrado)
+                && contraIngresada.equals(contraEncontrada);
     }
 
     private void mostrarError(String mensaje) {
         JOptionPane.showMessageDialog(null, mensaje, "ERROR INICIO DE SESIÓN", JOptionPane.ERROR_MESSAGE);
     }
 
-    private void redirigirTipoUsuario(String tipoUsuario) {
-//        final String ADMIN = "ADMINISTRADOR";
-//        final String VENDEDOR = "VENDEDOR";
-        final String ADMIN = "1";
-        final String VENDEDOR = "VEN";
+    private void redirigirSegunTipo(String tipoUsuario) {
+        // Ajusta estos códigos a lo que te devuelve la BD:
+        final String ADMIN = "1";     // ó "ADMINISTRADOR"
+        final String VENDEDOR = "2"; // ó "VENDEDOR"
 
-        if (ADMIN.equals(tipoUsuario)) {
-            VistaAdmin vistaAdmin = new VistaAdmin();
-            vistaAdmin.setVisible(true);
-
-        } else if (VENDEDOR.equals(tipoUsuario)) {
-            VistaVendedor vistaVendedor = new VistaVendedor();
-            vistaVendedor.setVisible(true);
+        JFrame actual = modelo.getVistaInicio();
+        try {
+            if (tipoUsuario != null && tipoUsuario.equalsIgnoreCase(ADMIN)) {
+                VistaAdmin vistaAdmin = new VistaAdmin();
+                vistaAdmin.setLocationRelativeTo(null);
+                vistaAdmin.setVisible(true);
+            } else if (tipoUsuario != null && tipoUsuario.equalsIgnoreCase(VENDEDOR)) {
+                VistaVendedor vistaVendedor = new VistaVendedor();
+                vistaVendedor.setLocationRelativeTo(null);
+                vistaVendedor.setVisible(true);
+            } else {
+                mostrarError("Tipo de usuario no reconocido: " + tipoUsuario);
+                return;
+            }
+        } finally {
+            if (actual != null) actual.dispose();
         }
-        modelo.getVistaInicio().dispose();
     }
 
     public void inputIsEmpty() {
+        String u = modelo.getVistaInicio().txtUsuario.getText();
+        String p = String.valueOf(modelo.getVistaInicio().txtPassword.getPassword());
 
-        if (modelo.getVistaInicio().txtUsuario.getText().isEmpty() || String.valueOf(modelo.getVistaInicio().txtPassword.getPassword()).isEmpty()) {
-            JOptionPane.showInternalMessageDialog(null, "Por favor debe de ingresar todos los datos", "ERROR \"DATOS VACIOS\"", JOptionPane.WARNING_MESSAGE);
+        if (u == null || u.isBlank() || p == null || p.isBlank()) {
+            JOptionPane.showInternalMessageDialog(null,
+                    "Por favor ingresa usuario y contraseña",
+                    "ERROR \"DATOS VACÍOS\"",
+                    JOptionPane.WARNING_MESSAGE);
         } else {
             capturaDeDatos();
         }
@@ -131,18 +147,26 @@ public class ControladorVistaInicio implements MouseListener {
             String usuarioIngresado = modelo.getVistaInicio().txtUsuario.getText();
             String contraseniaIngresada = String.valueOf(modelo.getVistaInicio().txtPassword.getPassword());
 
+            // Llama a tu implementación/DAO
             ModeloVistaInicio model = implementacion.consultaUsuario(usuarioIngresado, contraseniaIngresada);
 
+            // Siguiendo tu diseño actual, estos getters son estáticos
             String usuarioEncontrado = model.getUsuarioEncontrado();
             String contraseniaEncontrada = model.getContraseniaEncontrada();
             String tipoDeUsuario = model.getTipoUsuario();
             boolean usuarioActivo = model.isUsuarioActivo();
 
-            validarUsuario(tipoDeUsuario, usuarioIngresado, contraseniaIngresada, usuarioEncontrado, contraseniaEncontrada, usuarioActivo);
-        } catch (NullPointerException e) {
+            validarUsuario(tipoDeUsuario, usuarioIngresado, contraseniaIngresada,
+                           usuarioEncontrado, contraseniaEncontrada, usuarioActivo);
+
+        } catch (NullPointerException ex) {
             System.out.println("ERROR: Datos no encontrados");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error inesperado: " + e.getMessage(), "ERROR CRÍTICO", JOptionPane.ERROR_MESSAGE);
+            mostrarError("No se encontró el usuario o hubo un problema con la consulta.");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,
+                    "Error inesperado: " + ex.getMessage(),
+                    "ERROR CRÍTICO",
+                    JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -159,8 +183,7 @@ public class ControladorVistaInicio implements MouseListener {
             public void actionPerformed(ActionEvent e) {
                 inputIsEmpty();
             }
-        }
-        );
+        });
     }
 
     public void limpiarDatos() {
